@@ -56,6 +56,11 @@ public class Main {
             i++;
         }
 
+
+    }
+    public static void removePlayer(String playerName) {
+        System.out.println("Sorry " + playerName + " , but you are out of money, this means you have been eliminated from the game, better luck next time!");
+        //code removing from list when it gets sorted out
     }
 
 }
