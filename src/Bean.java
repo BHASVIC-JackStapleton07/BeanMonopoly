@@ -2,7 +2,7 @@ package src;
 
 public class Bean {
     //variables
-    private  String name;
+    private String name;
     private int location;
     private int level;
     private boolean isBought;

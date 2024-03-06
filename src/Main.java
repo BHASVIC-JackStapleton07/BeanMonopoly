@@ -3,12 +3,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
         //create bean array
         ArrayList<Bean> beans = new ArrayList<Bean>();
         ArrayList<Player> players = new ArrayList<>();
+        createBeans(beans);
+        createPlayers();
+    }
 
+    private static void createBeans(ArrayList<Bean> beans) {
         //add beans (name, location, cost, tax)
         beans.add(new Bean("Baked Bean", 1, 60, 10));
         beans.add(new Bean("Kidney Bean", 2, 60, 20));
@@ -35,19 +40,19 @@ public class Main {
         beans.add(new Bean("Ben's Beans", 24, 500, 250));
     }
 
-
-
-    public void createPlayers() {
+    public static void createPlayers() {
         int numOfPlayers;
+        ArrayList<Player> players = new ArrayList<Player>();
         do {
             System.out.println("How many players will be playing this game of Bean monopoly, please note that the minimum number of players is 2, and the maximum number of players is 4:");
             numOfPlayers = Integer.valueOf(scanner.nextLine());
-        } while (numOfPlayers >= 2 && numOfPlayers <= 4);
-        for (int i = 2; i <= numOfPlayers; i++) {
-            System.out.println("What is player " + i + "s name?:");
+        } while (numOfPlayers < 2 || numOfPlayers > 4);
+        //adds each player to array
+        for (int i = 1; i <= numOfPlayers; i++) {
+            System.out.println("What is player " + i + "'s name?:");
             String name = scanner.nextLine();
             System.out.println("Welcome to Bean monopoly " + name + " ,happy playing!");
-            Player player = new Player(i, name);
+            players.add(new Player(i, name));
             i++;
         }
 
