@@ -3,11 +3,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    Scanner scanner = new Scanner(System.in);
+    ArrayList<Player> players = new ArrayList<>(); //creates array list to store players in
+    Scanner scanner = new Scanner(System.in); //used to take user input
     public static void main(String[] args) {
         //create bean array
         ArrayList<Bean> beans = new ArrayList<Bean>();
-        ArrayList<Player> players = new ArrayList<>();
 
         //add beans (name, location, cost, tax)
         beans.add(new Bean("Baked Bean", 1, 60, 10));
@@ -47,8 +47,7 @@ public class Main {
             System.out.println("What is player " + i + "s name?:");
             String name = scanner.nextLine();
             System.out.println("Welcome to Bean monopoly " + name + " ,happy playing!");
-            Player player = new Player(i, name);
-            i++;
+            players.add(new Player(i, name));
         }
 
     }
