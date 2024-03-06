@@ -1,8 +1,9 @@
 package src;
-
+import java.util.Scanner;
 public class Player {
     int MoneyBalance; //decide on starting balance later
     int PlayerNumber; //stores player number
+    Scanner scanner = new Scanner(System.in);
     String PlayerName;  //stores name of the player
 
 
