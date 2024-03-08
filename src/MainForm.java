@@ -11,7 +11,7 @@ public class MainForm {
     private JButton CONTINUEButton;
     private JTextArea consoleText;
     private JTextField answerField;
-    private JTextPane boardDisplay;
+    public JTextPane boardDisplay;
 
     public MainForm() {
         boardDisplay.setEditable(false);

@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
+    Board board = new Board();
+    DiceRoller dice = new DiceRoller();
 
     public static void main(String[] args) {
         //create bean array
