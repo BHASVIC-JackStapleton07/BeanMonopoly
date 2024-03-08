@@ -1,6 +1,8 @@
+package src;
+
 import java.util.Random;
-        public class DiceRoller
-        {
+public class DiceRoller
+{
         private int dice1;
         private int dice2;
         private boolean isDouble;
@@ -15,7 +17,7 @@ import java.util.Random;
             Random random = new Random();
             dice1 = random.nextInt(6) + 1;
             dice2 = random.nextInt(6) + 1;
-            isDouble = dice1 == dice2;
+            if (dice1 == dice2) { isDouble = true; } else { isDouble = false; }
         }
 
         public int getTotalScore()
@@ -28,12 +30,12 @@ import java.util.Random;
             return isDouble;
         }
 
-        public static void main(String[] args)
-        {
-                DiceRoller diceRoller = new DiceRoller();
-                System.out.println("Dice 1: " + diceRoller.dice1);
-                System.out.println("Dice 2: " + diceRoller.dice2);
-                System.out.println("Total Score: " + diceRoller.getTotalScore());
-                System.out.println("Is double: " + diceRoller.isDouble());
-        }
-        }
+        //public static void main(String[] args)
+//        {
+//                DiceRoller diceRoller = new DiceRoller();
+//                System.out.println("Dice 1: " + diceRoller.dice1);
+//                System.out.println("Dice 2: " + diceRoller.dice2);
+//                System.out.println("Total Score: " + diceRoller.getTotalScore());
+//                System.out.println("Is double: " + diceRoller.isDouble());
+//        }
+}

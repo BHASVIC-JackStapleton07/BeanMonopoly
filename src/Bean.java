@@ -2,7 +2,7 @@ package src;
 
 public class Bean {
     //variables
-    private  String name;
+    private String name;
     private int location;
     private int level;
     private boolean isBought;
@@ -12,11 +12,11 @@ public class Bean {
 
 
     //this fills in the information when the beans are made at the start of the game
-    public Bean(String newName, int newLocation, int newLevel, int newCost, int newTax) {
-        name = newName; level = newLevel; tax = newTax; //sets variables
+    public Bean(String newName, int newLocation, int newCost, int newTax) {
+        name = newName; tax = newTax; //sets variables
         location = newLocation; cost = newCost;
         isBought = false; ownerID = 0; //ownerID = 0 and isbought is false because the bean isn't owned by anyone
-
+        level = 0; //unbought means the bean is not upgraded
     }
 
     //called when a bean is bought
