@@ -13,7 +13,11 @@ public class Main {
         ArrayList<Player> players = new ArrayList<>();
         createBeans(beans);
         createPlayers();
+        turn(players);
     }
+
+
+
 
     private static void createBeans(ArrayList<Bean> beans) {
         //add beans (name, location, cost, tax)
@@ -60,9 +64,48 @@ public class Main {
 
 
     }
+
     public static void removePlayer(String playerName) {
         System.out.println("Sorry " + playerName + " , but you are out of money, this means you have been eliminated from the game, better luck next time!");
         //code removing from list when it gets sorted out
+    }
+    public static void turn(ArrayList<Player> players) {
+        int counter = 0;
+        int move; //used to calculate how much player needs to move on the board (can get passed into another method)
+        boolean isDouble;
+        DiceRoller diceRoller = new DiceRoller();
+        boolean landedOnCard;
+        boolean missATurn;
+        boolean landOnGo;
+        boolean passGo;
+        do {
+            do {
+                isDouble = false;
+                System.out.println("It is now player " + players.get(counter) + " turn.");
+                System.out.println("Dice 1: " + diceRoller.dice1);
+                System.out.println("Dice 2: " + diceRoller.dice2);
+                System.out.println("Total Score: " + diceRoller.getTotalScore());
+                System.out.println("Is double: " + diceRoller.isDouble());
+                move = diceRoller.getTotalScore();
+                // code to make player move along this board
+
+                if (landedOnCard) {
+                    //code for drawing a card and doing the action...
+                }
+                if (landOnGo) {
+                    players.get(counter).changeMoney(1000);
+                    System.out.println("You landed on go! Your balance has increased by 1000.");
+                }
+                if (passGo) {
+                    players.get(counter).changeMoney(500);
+                    System.out.println("You passed go! Your balance has increased by 500.");
+                }
+
+
+                isDouble = diceRoller.isDouble;
+            } while (isDouble);
+            counter++;
+        } while(1==1);
     }
 
 }
