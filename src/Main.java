@@ -3,14 +3,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         //create bean array
-        ArrayList<Bean> beans = new ArrayList<Bean>();
-        ArrayList<Player> players = new ArrayList<>();
+        PlayerManager playerManager = new PlayerManager(); //makes player manager to store players
+        ArrayList<Player> players = new ArrayList<>(); //makes a list of players to store data returned by player manager
+        players = playerManager.createPlayers(players); //defines players as everything returned by player manager
+        //move this from main when code is more fleshed out
+        ArrayList<Bean> beans = new ArrayList<>();
         createBeans(beans);
-        createPlayers();
+
     }
 
     private static void createBeans(ArrayList<Bean> beans) {
@@ -40,27 +42,4 @@ public class Main {
         beans.add(new Bean("Ben's Beans", 24, 500, 250));
     }
 
-    public static void createPlayers() {
-        int numOfPlayers;
-        ArrayList<Player> players = new ArrayList<Player>();
-        do {
-            System.out.println("How many players will be playing this game of Bean monopoly, please note that the minimum number of players is 2, and the maximum number of players is 4:");
-            numOfPlayers = Integer.valueOf(scanner.nextLine());
-        } while (numOfPlayers < 2 || numOfPlayers > 4);
-        //adds each player to array
-        for (int i = 1; i <= numOfPlayers; i++) {
-            System.out.println("What is player " + i + "'s name?:");
-            String name = scanner.nextLine();
-            System.out.println("Welcome to Bean monopoly " + name + " ,happy playing!");
-            players.add(new Player(i, name));
-            i++;
-        }
-
-
     }
-    public static void removePlayer(String playerName) {
-        System.out.println("Sorry " + playerName + " , but you are out of money, this means you have been eliminated from the game, better luck next time!");
-        //code removing from list when it gets sorted out
-    }
-
-}
