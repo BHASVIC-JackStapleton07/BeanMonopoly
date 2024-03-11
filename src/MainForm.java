@@ -13,12 +13,14 @@ public class MainForm {
     private JTextField answerField;
     public JTextPane boardDisplay;
 
+    DiceRoller dice = new DiceRoller();
+
     public MainForm() {
         boardDisplay.setEditable(false);
         ROLLButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dice.rollDice();
             }
         });
         BUYUPGRADEButton.addActionListener(new ActionListener() {
@@ -35,7 +37,12 @@ public class MainForm {
         });
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+    public void outputConsoleText(String string) {
+        consoleText.append("\n" + string);
     }
+
+    public void clearConsoleText() {
+        consoleText.setText("");
+    }
+
 }

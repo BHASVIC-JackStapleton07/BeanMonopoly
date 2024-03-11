@@ -1,14 +1,16 @@
 package src;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class Board {
 
-    MainForm mainForm = new MainForm();
-    private JTextPane boardDisplay;
+    static MainForm mainForm = new MainForm();
+    private static JTextPane boardDisplay;
+
 
     //fat array for board
-    String[][] boardPosArray = new String[26][4]; //pos0 is start pos13 is miss a go
+    static String[][] boardPosArray = new String[26][4]; //pos0 is start pos13 is miss a go
     void fillArray(String[][] array) {
         for (int i = 0; i < 26; i++) {
             for (int j = 0; j < 5; j++) {
@@ -21,44 +23,100 @@ public class Board {
         boardDisplay = new JTextPane();
         fillArray(boardPosArray);
         boardPosArray[0][0] = "1"; boardPosArray[0][1] = "2"; boardPosArray[0][2] = "3"; boardPosArray[0][3] = "4";
-        printBoard(boardDisplay, boardPosArray);
+        printBoard();
     }
 
     public JTextPane getTextPane() {
         return boardDisplay;
     }
 
-    private void printBoard(JTextPane boardDisplay, String[][] array) {
+    public static void printBoard() {
         boardDisplay.setEditable(false);
         String boardText =
                 "\n" +
                         " START\n" +
                         " ----- ----- ----- ----- ----- ----- ----- ----- \n" +
-                        "| "+ array[0][0] +" "+ array[0][1] +" | "+ array[1][0] +" "+ array[1][1] +" | "+ array[2][0] +" "+ array[2][1] +" | "+ array[3][0] +" "+ array[3][1] +" | "+ array[4][0] +" "+ array[4][1] +" | "+ array[5][0] +" "+ array[5][1] +" | "+ array[6][0] +" "+ array[6][1] +" | "+ array[7][0] +" "+ array[7][1] +" |\n" +
-                        "| "+ array[0][2] +" "+ array[0][3] +" | "+ array[1][2] +" "+ array[1][3] +" | "+ array[2][2] +" "+ array[2][3] +" | "+ array[3][2] +" "+ array[3][3] +" | "+ array[4][2] +" "+ array[4][3] +" | "+ array[5][2] +" "+ array[5][3] +" | "+ array[6][2] +" "+ array[6][3] +" | "+ array[7][2] +" "+ array[7][3] +" |\n" +
+                        "| "+ boardPosArray[0][0] +" "+ boardPosArray[0][1] +" | "+ boardPosArray[1][0] +" "+ boardPosArray[1][1] +" | "+ boardPosArray[2][0] +" "+ boardPosArray[2][1] +" | "+ boardPosArray[3][0] +" "+ boardPosArray[3][1] +" | "+ boardPosArray[4][0] +" "+ boardPosArray[4][1] +" | "+ boardPosArray[5][0] +" "+ boardPosArray[5][1] +" | "+ boardPosArray[6][0] +" "+ boardPosArray[6][1] +" | "+ boardPosArray[7][0] +" "+ boardPosArray[7][1] +" |\n" +
+                        "| "+ boardPosArray[0][2] +" "+ boardPosArray[0][3] +" | "+ boardPosArray[1][2] +" "+ boardPosArray[1][3] +" | "+ boardPosArray[2][2] +" "+ boardPosArray[2][3] +" | "+ boardPosArray[3][2] +" "+ boardPosArray[3][3] +" | "+ boardPosArray[4][2] +" "+ boardPosArray[4][3] +" | "+ boardPosArray[5][2] +" "+ boardPosArray[5][3] +" | "+ boardPosArray[6][2] +" "+ boardPosArray[6][3] +" | "+ boardPosArray[7][2] +" "+ boardPosArray[7][3] +" |\n" +
                         " ----- ----- ----- ----- ----- ----- ----- ----- \n" +
-                        "| "+ array[25][0] +" "+ array[25][1] +" |                                   | "+ array[8][0] +" "+ array[8][1] +" |\n" +
-                        "| "+ array[25][2] +" "+ array[25][3] +" |                                   | "+ array[8][2] +" "+ array[8][3] +" |\n" +
+                        "| "+ boardPosArray[25][0] +" "+ boardPosArray[25][1] +" |                                   | "+ boardPosArray[8][0] +" "+ boardPosArray[8][1] +" |\n" +
+                        "| "+ boardPosArray[25][2] +" "+ boardPosArray[25][3] +" |                                   | "+ boardPosArray[8][2] +" "+ boardPosArray[8][3] +" |\n" +
                         " -----                                     ----- \n" +
-                        "| "+ array[24][0] +" "+ array[24][1] +" |                                   | "+ array[9][0] +" "+ array[9][1] +" |\n" +
-                        "| "+ array[24][2] +" "+ array[24][3] +" |                                   | "+ array[9][2] +" 4 |\n" +
+                        "| "+ boardPosArray[24][0] +" "+ boardPosArray[24][1] +" |                                   | "+ boardPosArray[9][0] +" "+ boardPosArray[9][1] +" |\n" +
+                        "| "+ boardPosArray[24][2] +" "+ boardPosArray[24][3] +" |                                   | "+ boardPosArray[9][2] +" "+ boardPosArray[9][3] +" |\n" +
                         " -----                                     ----- \n" +
-                        "| "+ array[23][0] +" "+ array[23][1] +" |                                   | "+ array[10][0] +" "+ array[10][1] +" |\n" +
-                        "| "+ array[23][2] +" "+ array[23][3] +" |                                   | 3 4 |\n" +
+                        "| "+ boardPosArray[23][0] +" "+ boardPosArray[23][1] +" |                                   | "+ boardPosArray[10][0] +" "+ boardPosArray[10][1] +" |\n" +
+                        "| "+ boardPosArray[23][2] +" "+ boardPosArray[23][3] +" |                                   | "+ boardPosArray[10][2] +" "+ boardPosArray[10][3] +" |\n" +
                         " -----                                     ----- \n" +
-                        "| "+ array[22][0] +" "+ array[22][1] +" |                                   | "+ array[11][0] +" "+ array[11][1] +" |\n" +
-                        "| "+ array[22][2] +" "+ array[22][3] +" |                                   | 3 4 |\n" +
+                        "| "+ boardPosArray[22][0] +" "+ boardPosArray[22][1] +" |                                   | "+ boardPosArray[11][0] +" "+ boardPosArray[11][1] +" |\n" +
+                        "| "+ boardPosArray[22][2] +" "+ boardPosArray[22][3] +" |                                   | "+ boardPosArray[11][2] +" "+ boardPosArray[11][3] +" |\n" +
                         " -----                                     ----- \n" +
-                        "| "+ array[21][0] +" "+ array[21][1] +" |                                   | "+ array[12][0] +" "+ array[12][1] +" |\n" +
-                        "| "+ array[21][2] +" "+ array[21][3] +" |                                   | 3 4 |\n" +
+                        "| "+ boardPosArray[21][0] +" "+ boardPosArray[21][1] +" |                                   | "+ boardPosArray[12][0] +" "+ boardPosArray[12][1] +" |\n" +
+                        "| "+ boardPosArray[21][2] +" "+ boardPosArray[21][3] +" |                                   | "+ boardPosArray[12][2] +" "+ boardPosArray[12][3] +" |\n" +
                         " ----- ----- ----- ----- ----- ----- ----- ----- \n" +
-                        "| "+ array[20][0] +" "+ array[20][1] +" | "+ array[19][0] +" "+ array[19][1] +" | "+ array[18][0] +" "+ array[18][1] +" | "+ array[17][0] +" "+ array[17][1] +" | "+ array[16][0] +" "+ array[16][1] +" | "+ array[15][0] +" "+ array[15][1] +" | "+ array[14][0] +" "+ array[14][1] +" | "+ array[13][0] +" "+ array[13][1] +" |\n" +
-                        "| 3 4 | 3 4 | 3 4 | 3 4 | 3 4 | 3 4 | 3 4 | 3 4 |\n" +
+                        "| "+ boardPosArray[20][0] +" "+ boardPosArray[20][1] +" | "+ boardPosArray[19][0] +" "+ boardPosArray[19][1] +" | "+ boardPosArray[18][0] +" "+ boardPosArray[18][1] +" | "+ boardPosArray[17][0] +" "+ boardPosArray[17][1] +" | "+ boardPosArray[16][0] +" "+ boardPosArray[16][1] +" | "+ boardPosArray[15][0] +" "+ boardPosArray[15][1] +" | "+ boardPosArray[14][0] +" "+ boardPosArray[14][1] +" | "+ boardPosArray[13][0] +" "+ boardPosArray[13][1] +" |\n" +
+                        "| "+ boardPosArray[20][2] +" "+ boardPosArray[20][3] +" | "+ boardPosArray[19][2] +" "+ boardPosArray[19][3] +" | "+ boardPosArray[18][2] +" "+ boardPosArray[18][3] +" | "+ boardPosArray[17][2] +" "+ boardPosArray[17][3] +" | "+ boardPosArray[16][2] +" "+ boardPosArray[16][3] +" | "+ boardPosArray[15][2] +" "+ boardPosArray[15][3] +" | "+ boardPosArray[14][2] +" "+ boardPosArray[14][3] +" | "+ boardPosArray[13][2] +" "+ boardPosArray[13][3] +" |\n" +
                         " ----- ----- ----- ----- ----- ----- ----- ----- \n" +
                         "                                           MISS A\n" +
                         "                                             GO";
         boardDisplay.setText("");
         boardDisplay.setText(boardText);
+    }
+
+    public void movePlayerOnBoard()
+
+    DiceRoller dice = new DiceRoller();
+
+
+
+
+    public static void turn(ArrayList<Player> players) {
+        int counter = 0;
+        int move; //used to calculate how much player needs to move on the board (can get passed into another method)
+        boolean isDouble;
+        DiceRoller diceRoller = new DiceRoller();
+        boolean landedOnCard = false;
+        boolean missATurn = false;
+        boolean landOnGo = false;
+        boolean passGo = false;
+        do {
+                isDouble = false;
+                printBoard();
+                mainForm.clearConsoleText();
+                mainForm.outputConsoleText("It is now the turn of " + (players.get(counter)) + ".");
+                mainForm.outputConsoleText("Dice 1: " + diceRoller.dice1);
+                mainForm.outputConsoleText("Dice 2: " + diceRoller.dice2);
+                mainForm.outputConsoleText("Total Score: " + diceRoller.getTotalScore());
+                mainForm.outputConsoleText("Is double: " + diceRoller.isDouble());
+                move = diceRoller.getTotalScore();
+
+                // code to make player move along this board
+                boardPosArray[players.get(counter).PlayerLocation][counter] = " "; //set previous location to blank
+                players.get(counter).PlayerLocation += move; //move player
+                int playerArrayPrintID = counter++; //just for printing
+                boardPosArray[players.get(counter).PlayerLocation][counter] = Integer.toString(playerArrayPrintID);
+                if (landedOnCard) {
+                    Cards cards = new Cards();
+
+                }
+                if (landOnGo) {
+                    players.get(counter).changeMoney(1000);
+                    mainForm.outputConsoleText("You landed on go! Your balance has increased by 1000.");
+
+                }
+                if (passGo) {
+                    players.get(counter).changeMoney(500);
+                    mainForm.outputConsoleText("You passed go! Your balance has increased by 500.");
+                }
+                isDouble = diceRoller.isDouble;
+        } while (isDouble);
+        if (counter == 3) {
+                counter = 0;
+        }
+        else {
+                counter++;
+        }
+
     }
 
 }

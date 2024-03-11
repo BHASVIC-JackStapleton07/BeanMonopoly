@@ -1,24 +1,40 @@
+package src;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-// Define the MysteryBean class
-class MysteryBean {
+//CARDS
+// Define the Cards class
+public class Cards {
     private String outcome;
 
     // Constructor
-    public MysteryBean(String outcome) {
+    public Cards(String outcome) {
         this.outcome = outcome;
+        List<String> outcomes = generateOutcomes();
+
+        // Create a list to hold Mystery Beans
+        List<Cards> mysteryBeans = new ArrayList<>();
+
+        // Populate the list with Mystery Beans with different outcomes
+        for (String outcome : outcomes) {
+            Cards bean = new Cards(outcome);
+            mysteryBeans.add(bean);
+        }
+
+        // Display the outcomes of each Mystery Bean
+        for (int i = 0; i < mysteryBeans.size(); i++) {
+            System.out.println("Card " + (i + 1) + " Outcome: " + mysteryBeans.get(i).getOutcome());
+        }
     }
 
     // Gets outcome
     public String getOutcome() {
         return outcome;
     }
-}
 
-public class Main {
     // Generates a list of 20 different outcomes
     public static List<String> generateOutcomes() {
         List<String> outcomes = new ArrayList<>();
@@ -52,21 +68,5 @@ public class Main {
         return outcomes.subList(0, 20);
     }
 
-    public static void main(String[] args) {
-        List<String> outcomes = generateOutcomes();
 
-        // Create a list to hold Mystery Beans
-        List<MysteryBean> mysteryBeans = new ArrayList<>();
-
-        // Populate the list with Mystery Beans with different outcomes
-        for (String outcome : outcomes) {
-            MysteryBean bean = new MysteryBean(outcome);
-            mysteryBeans.add(bean);
-        }
-
-        // Display the outcomes of each Mystery Bean
-        for (int i = 0; i < mysteryBeans.size(); i++) {
-            System.out.println("Mystery Bean " + (i + 1) + " Outcome: " + mysteryBeans.get(i).getOutcome());
-        }
     }
-}

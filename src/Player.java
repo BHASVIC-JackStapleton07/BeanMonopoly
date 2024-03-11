@@ -33,9 +33,7 @@ public class Player {
 
     public int getMoneyBalance() { return MoneyBalance; }
 
-    public boolean missATurn(boolean missATurn) {
-
-    }
+    public boolean missATurn(boolean missATurn) { return missATurn;  }
 
 
 }
