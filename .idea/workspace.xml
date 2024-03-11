@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="f1d856ca-e875-4458-be54-4c46f99f9e3d" name="Changes" comment="board + main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BeanMonopoly/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BeanMonopoly/.idea/workspace.xml" afterDir="false" />
@@ -15,6 +16,11 @@
       <change beforePath="$PROJECT_DIR$/src/DiceRoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DiceRoller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+=======
+    <list default="true" id="f1d856ca-e875-4458-be54-4c46f99f9e3d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,8 +57,13 @@
     "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+<<<<<<< Updated upstream
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "80",
     "WebServerToolWindowFactoryState": "false",
+=======
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+>>>>>>> Stashed changes
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/thomas.smyth23/Bean monopoly/BeanMonopoly",
@@ -84,6 +95,7 @@
       <workItem from="1709717852620" duration="1359000" />
       <workItem from="1709731144002" duration="2759000" />
       <workItem from="1709737835584" duration="1515000" />
+      <workItem from="1709893787282" duration="696000" />
     </task>
     <servers />
   </component>
