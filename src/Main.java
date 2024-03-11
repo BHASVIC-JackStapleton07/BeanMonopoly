@@ -7,7 +7,6 @@ public class Main {
     Board board = new Board();
     DiceRoller dice = new DiceRoller();
 
-
     public static void main(String[] args) {
         //create bean array
         PlayerManager playerManager = new PlayerManager(); //makes player manager to store players
