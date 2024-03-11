@@ -7,9 +7,6 @@ public class Main {
     public static void main(String[] args) {
         //create bean array
         PlayerManager playerManager = new PlayerManager(); //makes player manager to store players
-        ArrayList<Player> players = new ArrayList<>(); //makes a list of players to store data returned by player manager
-        players = playerManager.createPlayers(players); //defines players as everything returned by player manager
-        //move this from main when code is more fleshed out
         ArrayList<Bean> beans = new ArrayList<>();
         createBeans(beans);
 
