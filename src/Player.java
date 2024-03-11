@@ -7,12 +7,15 @@ public class Player {
     int PlayerLocation = 0; //startPosition
     Scanner scanner = new Scanner(System.in);
     String PlayerName;  //stores name of the player
+    String playingPiece; //stores player piece, can change into a graphic once swing is set up
     ArrayList<Bean> beansOwned = new ArrayList<>(); //stores the beans owned by the player
 
+
     //constructor, created for each player
-    public Player(int newPlayerNumber, String newPlayerName) {
+    public Player(int newPlayerNumber, String newPlayerName, String newPlayerPiece) {
         this.PlayerNumber = newPlayerNumber;
         this.PlayerName = newPlayerName;
+        this.playingPiece = newPlayerPiece;
     }
 
     public int changeMoney(int moneyAmount) {  //takes certain amount of money and passes it into method so that method knows how much money to add (eg 1000 for landing on go 500 for passing go)
