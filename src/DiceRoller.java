@@ -3,9 +3,9 @@ package src;
 import java.util.Random;
 public class DiceRoller
 {
-        private int dice1;
-        private int dice2;
-        private boolean isDouble;
+        int dice1;
+        int dice2;
+        boolean isDouble;
 
         public DiceRoller()
         {

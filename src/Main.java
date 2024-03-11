@@ -3,14 +3,28 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+<<<<<<< HEAD
+    static Scanner scanner = new Scanner(System.in);
+    Board board = new Board();
+    DiceRoller dice = new DiceRoller();
+=======
+>>>>>>> 1951db22a0c3fa67fb4c3d7d5c52ad986b905503
 
     public static void main(String[] args) {
         //create bean array
         PlayerManager playerManager = new PlayerManager(); //makes player manager to store players
         ArrayList<Bean> beans = new ArrayList<>();
         createBeans(beans);
+<<<<<<< HEAD
+        createPlayers();
+        turn(players);
+=======
 
+>>>>>>> 1951db22a0c3fa67fb4c3d7d5c52ad986b905503
     }
+
+
+
 
     private static void createBeans(ArrayList<Bean> beans) {
         //add beans (name, location, cost, tax)
@@ -40,3 +54,51 @@ public class Main {
     }
 
     }
+<<<<<<< HEAD
+
+    public static void removePlayer(String playerName) {
+        System.out.println("Sorry " + playerName + " , but you are out of money, this means you have been eliminated from the game, better luck next time!");
+        //code removing from list when it gets sorted out
+    }
+    public static void turn(ArrayList<Player> players) {
+        int counter = 0;
+        int move; //used to calculate how much player needs to move on the board (can get passed into another method)
+        boolean isDouble;
+        DiceRoller diceRoller = new DiceRoller();
+        boolean landedOnCard;
+        boolean missATurn;
+        boolean landOnGo;
+        boolean passGo;
+        do {
+            do {
+                isDouble = false;
+                System.out.println("It is now player " + players.get(counter) + " turn.");
+                System.out.println("Dice 1: " + diceRoller.dice1);
+                System.out.println("Dice 2: " + diceRoller.dice2);
+                System.out.println("Total Score: " + diceRoller.getTotalScore());
+                System.out.println("Is double: " + diceRoller.isDouble());
+                move = diceRoller.getTotalScore();
+                // code to make player move along this board
+
+                if (landedOnCard) {
+                    //code for drawing a card and doing the action...
+                }
+                if (landOnGo) {
+                    players.get(counter).changeMoney(1000);
+                    System.out.println("You landed on go! Your balance has increased by 1000.");
+                }
+                if (passGo) {
+                    players.get(counter).changeMoney(500);
+                    System.out.println("You passed go! Your balance has increased by 500.");
+                }
+
+
+                isDouble = diceRoller.isDouble;
+            } while (isDouble);
+            counter++;
+        } while(1==1);
+    }
+
+}
+=======
+>>>>>>> 1951db22a0c3fa67fb4c3d7d5c52ad986b905503
