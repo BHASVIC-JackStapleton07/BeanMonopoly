@@ -3,12 +3,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-<<<<<<< HEAD
     static Scanner scanner = new Scanner(System.in);
     Board board = new Board();
     DiceRoller dice = new DiceRoller();
-=======
->>>>>>> 1951db22a0c3fa67fb4c3d7d5c52ad986b905503
+
 
     public static void main(String[] args) {
         //create bean array
@@ -18,12 +16,6 @@ public class Main {
         //move this from main when code is more fleshed out
         ArrayList<Bean> beans = new ArrayList<>();
         createBeans(beans);
-<<<<<<< HEAD
-        createPlayers();
-        turn(players);
-=======
-
->>>>>>> 1951db22a0c3fa67fb4c3d7d5c52ad986b905503
     }
 
 
@@ -57,7 +49,6 @@ public class Main {
     }
 
     }
-<<<<<<< HEAD
 
     public static void removePlayer(String playerName) {
         System.out.println("Sorry " + playerName + " , but you are out of money, this means you have been eliminated from the game, better luck next time!");
@@ -103,5 +94,3 @@ public class Main {
     }
 
 }
-=======
->>>>>>> 1951db22a0c3fa67fb4c3d7d5c52ad986b905503

@@ -17,10 +17,7 @@ public class Player {
         this.PlayerName = newPlayerName;
         this.playingPiece = newPlayerPiece;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 1951db22a0c3fa67fb4c3d7d5c52ad986b905503
     public int changeMoney(int moneyAmount) {  //takes certain amount of money and passes it into method so that method knows how much money to add (eg 1000 for landing on go 500 for passing go)
         MoneyBalance = MoneyBalance + moneyAmount; //can pass in negative parameter to decrease money
         return MoneyBalance;
@@ -34,19 +31,11 @@ public class Player {
         return PlayerLocation;
     }
 
-<<<<<<< HEAD
     public int getMoneyBalance() { return MoneyBalance; }
+
     public boolean missATurn(boolean missATurn) {
 
     }
 
-
-
-=======
-    public int getMoneyBalance() {
-        return MoneyBalance;
-    }
-
->>>>>>> 1951db22a0c3fa67fb4c3d7d5c52ad986b905503
 
 }
