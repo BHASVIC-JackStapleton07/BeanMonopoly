@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    static Scanner scanner = new Scanner(System.in);
     Board board = new Board();
     DiceRoller dice = new DiceRoller();
     static MainForm mainForm = new MainForm();

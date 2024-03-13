@@ -63,7 +63,7 @@ public class Board {
         boardDisplay.setText(boardText);
     }
 
-    public void movePlayerOnBoard()
+    public void movePlayerOnBoard() {}
 
     DiceRoller dice = new DiceRoller();
 
@@ -73,13 +73,16 @@ public class Board {
     public static void turn(ArrayList<Player> players) {
         int counter = 0;
         int move; //used to calculate how much player needs to move on the board (can get passed into another method)
-        boolean isDouble;
+        boolean isDouble = false;
         DiceRoller diceRoller = new DiceRoller();
         boolean landedOnCard = false;
+        boolean landedOnMissATurn = false;
         boolean missATurn = false;
         boolean landOnGo = false;
         boolean passGo = false;
-        do {
+
+        do { //does the loop and repats if player lands a double
+                if (!missATurn) { //if loop that checks if player misses turn
                 isDouble = false;
                 printBoard();
                 mainForm.clearConsoleText();
@@ -89,14 +92,14 @@ public class Board {
                 mainForm.outputConsoleText("Total Score: " + diceRoller.getTotalScore());
                 mainForm.outputConsoleText("Is double: " + diceRoller.isDouble());
                 move = diceRoller.getTotalScore();
-
+                isDouble = diceRoller.isDouble;
                 // code to make player move along this board
                 boardPosArray[players.get(counter).PlayerLocation][counter] = " "; //set previous location to blank
                 players.get(counter).PlayerLocation += move; //move player
                 int playerArrayPrintID = counter++; //just for printing
                 boardPosArray[players.get(counter).PlayerLocation][counter] = Integer.toString(playerArrayPrintID);
                 if (landedOnCard) {
-                    Cards cards = new Cards();
+                    Cards cards = new Cards(); //pass in outcome variable for parameter
 
                 }
                 if (landOnGo) {
@@ -108,8 +111,22 @@ public class Board {
                     players.get(counter).changeMoney(500);
                     mainForm.outputConsoleText("You passed go! Your balance has increased by 500.");
                 }
-                isDouble = diceRoller.isDouble;
+                if (landedOnMissATurn) {
+                    missATurn = true;
+                    mainForm.outputConsoleText("You landed on miss a turn! Sorry, but your next turn will be skipped!");
+                    if (isDouble) {
+                        mainForm.outputConsoleText("Even though you rolled a double, since you landed on miss a turn, you wont be able to roll again, bad luck!"); //giving user explanation, so it doesn't come off as a bug
+                        isDouble = false; //makes sure player cant roll again if they land on miss a turn
+                    }
+                }
+
+            }
+                else {
+                    mainForm.outputConsoleText("You landed on miss a turn, so your turn has been skipped!");
+                    missATurn = false;
+                }
         } while (isDouble);
+
         if (counter == 3) {
                 counter = 0;
         }

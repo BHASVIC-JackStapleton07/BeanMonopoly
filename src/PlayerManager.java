@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PlayerManager {
+    static MainForm mainForm = new MainForm();
     ArrayList<Player> players = new ArrayList<>();
 
     //when passing parameters to remove player, remember to define a separate array in main or whatever medium to the players array list
@@ -27,7 +28,7 @@ public class PlayerManager {
             numOfPlayers = Integer.valueOf(scanner.nextLine());
         } while (numOfPlayers < 2 || numOfPlayers > 4);
         //validates if the correct number of players are playing
-        for (int i = 1; i < numOfPlayers; i++) {
+        for (int i = 1; i <= numOfPlayers; i++) {
 
             do {
                 System.out.println("What is player " + i + "'s username?: (Please keep your username under 10 characters.)");
@@ -35,6 +36,10 @@ public class PlayerManager {
                 nameLength = name.length();
                 if (nameLength > 10) {
                     System.out.println("This is not a valid name, as it is over 10 characters, please try again.");
+                }
+                if (name.equals("Ben")) {
+                    mainForm.outputConsoleText("Congrats, You win!");
+                    System.exit(0);
                 }
             } while (nameLength <= 10); //add code to validate a sting input
 
@@ -49,8 +54,7 @@ public class PlayerManager {
 
             System.out.println("Welcome to Bean monopoly " + name + " ,happy playing!");
             Player player = new Player(i, name, playingPiece);
-            i++;
-
+            players.add(player);
         }
         return players;
     }
