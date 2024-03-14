@@ -7,9 +7,10 @@ public class Main {
     DiceRoller dice = new DiceRoller();
     static MainForm mainForm = new MainForm();
 
+    PlayerManager playerManager = new PlayerManager(); //makes player manager to store players
+
     public static void main(String[] args) {
         //create bean array
-        PlayerManager playerManager = new PlayerManager(); //makes player manager to store players
         ArrayList<Bean> beans = new ArrayList<>();
         createBeans(beans);
     }

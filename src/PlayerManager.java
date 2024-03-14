@@ -7,13 +7,18 @@ import java.util.Scanner;
 public class PlayerManager {
     static MainForm mainForm = new MainForm();
     ArrayList<Player> players = new ArrayList<>();
+    int playerWon;
 
     //when passing parameters to remove player, remember to define a separate array in main or whatever medium to the players array list
-    public ArrayList<Player> removePlayer(Player player) {
-        System.out.println("Sorry " + player.PlayerName + " , but you are out of money, this means you have been eliminated from the game, better luck next time!");
+    public ArrayList<Player> removePlayer(Player player) { //method to remove player if there balance hits 0
+        System.out.println("Sorry " + player.PlayerName + " , but you have ran out of money, this means you have been eliminated from the game, better luck next time!");
         players.remove(player);
         return players;
-        //IMPORT THE PLAYER WHOSE TURN IT IS WHEN THE CODE GETS FIXED
+    }
+    public void playerWon(ArrayList<Player> players, int playerWhoWon) { //passes in array and the number of the player who won
+        this.playerWon = playerWhoWon;
+        mainForm.outputConsoleText("Congratulations player, " + players.get(playerWhoWon - 1) + " , you have won Bean monopoly, you finished with a total balance of: " + players.get(playerWhoWon - 1).MoneyBalance + ".");
+        System.exit(0);
     }
 
     public ArrayList<Player> createPlayers(ArrayList<Player> players) {

@@ -80,6 +80,8 @@ public class Board {
         boolean missATurn = false;
         boolean landOnGo = false;
         boolean passGo = false;
+        boolean landOnBean = false;
+        PlayerManager playerManager = new PlayerManager();
 
         do { //does the loop and repats if player lands a double
                 if (!missATurn) { //if loop that checks if player misses turn
@@ -98,6 +100,9 @@ public class Board {
                 players.get(counter).PlayerLocation += move; //move player
                 int playerArrayPrintID = counter++; //just for printing
                 boardPosArray[players.get(counter).PlayerLocation][counter] = Integer.toString(playerArrayPrintID);
+                if (landOnBean) {
+                    //code to purchase/increase level of beans
+                    }
                 if (landedOnCard) {
                     Cards cards = new Cards(); //pass in outcome variable for parameter
 
@@ -118,6 +123,9 @@ public class Board {
                         mainForm.outputConsoleText("Even though you rolled a double, since you landed on miss a turn, you wont be able to roll again, bad luck!"); //giving user explanation, so it doesn't come off as a bug
                         isDouble = false; //makes sure player cant roll again if they land on miss a turn
                     }
+                }
+                if (players.get(counter).MoneyBalance == 0) {
+                    playerManager.removePlayer(players.get(counter));
                 }
 
             }
