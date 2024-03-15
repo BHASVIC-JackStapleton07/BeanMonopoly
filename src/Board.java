@@ -1,7 +1,9 @@
 package src;
 
 import javax.swing.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Board {
 
@@ -77,7 +79,7 @@ public class Board {
 
 
 
-    public static void turn(ArrayList<Player> players) {
+    public void turn(ArrayList<Player> players, ArrayList<Bean> beans) {
         int counter = 0;
         int move; //used to calculate how much player needs to move on the board (can get passed into another method)
         boolean isDouble = false;
@@ -92,7 +94,7 @@ public class Board {
 
         chec
 
-        do { //does the loop and repats if player lands a double
+        do { //does the loop and repeats if player lands a double
                 if (!missATurn) { //if loop that checks if player misses turn
                 isDouble = false;
                 printBoard();
@@ -111,11 +113,41 @@ public class Board {
                 boardPosArray[players.get(counter).PlayerLocation][counter] = players.get(counter).playingPiece;
 
                 if (landOnBean) {
-                    //code to purchase/increase level of beans
-                    }
-                if (landedOnCard) {
-                    Cards cards = new Cards(); //pass in outcome variable for parameter
+                    int currentBean = players.get(counter).PlayerLocation - 1;
 
+                    if (currentBean >= 13) { currentBean--; }
+
+                    if (beans.get(currentBean).getOwnerID() == counter) {
+
+                        if (beans.get(currentBean).isBeanOwned() == false && (button)) {
+                            beans.get(currentBean).buyBean(counter); //buy bean
+                            int cost = beans.get(currentBean).getCost();
+                            players.get(counter).changeMoney(-cost); //remove money
+                        } else if () { //if you own the bean
+                            beans.get(currentBean).upgrade(); //upgrade bean
+                            int cost = beans.get(currentBean).getCost();
+                            players.get(counter).changeMoney(-cost);
+                        }
+
+                    } else {
+                        //tax
+                        int level = beans.get(currentBean).getLevel();
+                        int tax = beans.get(currentBean).getTax();
+                        int ownerID = beans.get(currentBean).getOwnerID();
+                        players.get(counter).changeMoney(-(tax * (level + 1)));//remove money from taxed player
+                        players.get(ownerID).changeMoney((tax) * (level + 1)); //give money to owner of bean
+                        checkBalance(counter, players); //check if in debt
+                    }
+                }
+                if (landedOnCard) {
+                    int cardMoneyChange;
+                    Cards cards = new Cards();
+                    String card = cards.drawCard();
+                    cardMoneyChange = scanner.nextInt();
+                    players.get(counter).changeMoney(cardMoneyChange);
+                    mainForm.outputConsoleText(card);
+
+                    //make sure all cards actually do something
                 }
                 if (landOnGo) {
                     players.get(counter).changeMoney(1000);

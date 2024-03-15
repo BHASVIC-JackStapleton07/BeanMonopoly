@@ -48,7 +48,11 @@ public class PlayerManager {
                     mainForm.outputConsoleText("Congrats, You win!");
                     System.exit(0);
                 }
-            } while (nameLength <= 10); //add code to validate a sting input
+                if (name.equals("Ethen")) {
+                    mainForm.outputConsoleText("Ethen, you lose.");
+                    System.exit(0);
+                }
+            } while (nameLength <= 10); //code to validate a sting input
 
             do {
                 mainForm.outputConsoleText("What would you like your playing piece to be, you can choose one ASCII character:");

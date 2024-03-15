@@ -20,9 +20,12 @@ public class Bean {
         isBought = false; ownerID = 0; //ownerID = 0 and isbought is false because the bean isn't owned by anyone
         level = 0; //unbought means the bean is not upgraded
     }
+    public Bean(){
+
+    }
 
     //called when a bean is bought
-    private void buy(int playerID) {
+    public void buyBean(int playerID) {
         isBought = true;
         ownerID = playerID;
         //sets player as owner
