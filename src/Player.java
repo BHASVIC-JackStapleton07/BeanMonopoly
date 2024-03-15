@@ -6,6 +6,7 @@ public class Player {
     int PlayerNumber; //stores player number
     int PlayerLocation = 0; //startPosition
     Scanner scanner = new Scanner(System.in);
+    MainForm mainForm = new MainForm();
     String PlayerName;  //stores name of the player
     String playingPiece; //stores player piece, can change into a graphic once swing is set up
     ArrayList<Bean> beansOwned = new ArrayList<>(); //stores the beans owned by the player
@@ -19,7 +20,9 @@ public class Player {
     }
 
     public int changeMoney(int moneyAmount) {  //takes certain amount of money and passes it into method so that method knows how much money to add (eg 1000 for landing on go 500 for passing go)
+
         MoneyBalance = MoneyBalance + moneyAmount; //can pass in negative parameter to decrease money
+        mainForm.outputConsoleText("Money: " + MoneyBalance);
         return MoneyBalance;
     }
 

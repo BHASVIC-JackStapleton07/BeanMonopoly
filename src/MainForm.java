@@ -45,4 +45,8 @@ public class MainForm {
         consoleText.setText("");
     }
 
+    public void updateMoneyBalance() {
+
+    }
+
 }

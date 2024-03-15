@@ -7,6 +7,10 @@ public class Board {
 
     static MainForm mainForm = new MainForm();
     private static JTextPane boardDisplay;
+    Bean bean = new Bean();
+    Scanner scanner = new Scanner(System.in);
+
+    PlayerManager playerManager = new PlayerManager();
 
 
     //fat array for board
@@ -22,7 +26,10 @@ public class Board {
     public Board() {
         boardDisplay = new JTextPane();
         fillArray(boardPosArray);
-        boardPosArray[0][0] = "1"; boardPosArray[0][1] = "2"; boardPosArray[0][2] = "3"; boardPosArray[0][3] = "4";
+        boardPosArray[0][0] = "1"; boardPosArray[0][1] = "2";
+        if (playerManager.numOfPlayers > 2) {
+        boardPosArray[0][2] = "3"; }
+        if (playerManager.numOfPlayers > 3) { boardPosArray[0][3] = "4"; }
         printBoard();
     }
 
@@ -83,6 +90,8 @@ public class Board {
         boolean landOnBean = false;
         PlayerManager playerManager = new PlayerManager();
 
+        chec
+
         do { //does the loop and repats if player lands a double
                 if (!missATurn) { //if loop that checks if player misses turn
                 isDouble = false;
@@ -99,7 +108,8 @@ public class Board {
                 boardPosArray[players.get(counter).PlayerLocation][counter] = " "; //set previous location to blank
                 players.get(counter).PlayerLocation += move; //move player
                 int playerArrayPrintID = counter++; //just for printing
-                boardPosArray[players.get(counter).PlayerLocation][counter] = Integer.toString(playerArrayPrintID);
+                boardPosArray[players.get(counter).PlayerLocation][counter] = players.get(counter).playingPiece;
+
                 if (landOnBean) {
                     //code to purchase/increase level of beans
                     }
@@ -142,6 +152,12 @@ public class Board {
                 counter++;
         }
 
+    }
+
+    public void checkBalance(int playerID, ArrayList<Player> players) {
+        if (players.get(playerID).MoneyBalance <= 0 ) {
+            playerManager.removePlayer(playerID);
+        }
     }
 
 }

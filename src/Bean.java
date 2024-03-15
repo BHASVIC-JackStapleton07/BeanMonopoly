@@ -1,5 +1,7 @@
 package src;
 
+import java.util.ArrayList;
+
 public class Bean {
     //variables
     private String name;
@@ -26,22 +28,30 @@ public class Bean {
         //sets player as owner
     }
 
-    private void update() {
+    public void upgrade() {
         level++;
         //level up by one when bean upgraded
     }
 
     //gets
-    private int getCost() {
+    public int getCost() {
         return cost; //returns the base level cost
     }
 
-    private int getTax() {
+    public int getTax() {
         return tax; //level 0 tax
     }
 
-    private int getOwnerID() {
+    public int getOwnerID() {
         return ownerID;
+    }
+
+    public boolean isBeanOwned() {
+        return isBought;
+    }
+
+    public int getLevel() {
+        return level;
     }
 
 }

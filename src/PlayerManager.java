@@ -8,11 +8,13 @@ public class PlayerManager {
     static MainForm mainForm = new MainForm();
     ArrayList<Player> players = new ArrayList<>();
     int playerWon;
+    public int numOfPlayers;
+
 
     //when passing parameters to remove player, remember to define a separate array in main or whatever medium to the players array list
-    public ArrayList<Player> removePlayer(Player player) { //method to remove player if there balance hits 0
-        mainForm.outputConsoleText("Sorry " + player.PlayerName + " , but you have ran out of money, this means you have been eliminated from the game, better luck next time!");
-        players.remove(player);
+    public ArrayList<Player> removePlayer(int playerID) { //method to remove player if there balance hits 0
+        mainForm.outputConsoleText("Sorry " + players.get(playerID).PlayerName + " , but you have ran out of money, this means you have been eliminated from the game, better luck next time!");
+        players.remove(playerID);
         return players;
     }
     public void playerWon(ArrayList<Player> players, int playerWhoWon) { //passes in array and the number of the player who won
@@ -21,8 +23,7 @@ public class PlayerManager {
         System.exit(0);
     }
 
-    public ArrayList<Player> createPlayers(ArrayList<Player> players) {
-        int numOfPlayers;
+    public static ArrayList<Player> createPlayers(ArrayList<Player> players, int numOfPlayers) {
         String playingPiece;
         int stringLength;
         String name;
@@ -35,6 +36,7 @@ public class PlayerManager {
         //validates if the correct number of players are playing
         for (int i = 1; i <= numOfPlayers; i++) {
 
+            mainForm.clearConsoleText();
             do {
                 mainForm.outputConsoleText("What is player " + i + "'s username?: (Please keep your username under 10 characters.)");
                 name = scanner.nextLine();

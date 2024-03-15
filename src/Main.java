@@ -5,20 +5,29 @@ import java.util.Scanner;
 public class Main {
     Board board = new Board();
     DiceRoller dice = new DiceRoller();
-    static MainForm mainForm = new MainForm();
+    MainForm mainForm = new MainForm();
 
     PlayerManager playerManager = new PlayerManager(); //makes player manager to store players
 
-    public static void main(String[] args) {
+    ArrayList<Player> players = new ArrayList<>();
+    int numOfPlayers = playerManager.numOfPlayers;
+    public boolean gameWon = false;
+
+    public void main(String[] args) {
         //create bean array
         ArrayList<Bean> beans = new ArrayList<>();
         createBeans(beans);
+        players = PlayerManager.createPlayers(players, numOfPlayers);
+
+        do {
+            board.turn(players, beans);
+        } while (gameWon);
     }
 
 
 
 
-    private static void createBeans(ArrayList<Bean> beans) {
+    private void createBeans(ArrayList<Bean> beans) {
         //add beans (name, location, cost, tax)
         beans.add(new Bean("Baked Bean", 1, 60, 10));
         beans.add(new Bean("Kidney Bean", 2, 60, 20));
@@ -45,10 +54,5 @@ public class Main {
         beans.add(new Bean("Ben's Beans", 24, 500, 250));
     }
 
-
-    public static void removePlayer(String playerName) {
-        mainForm.outputConsoleText("Sorry " + playerName + " , but you are out of money, this means you have been eliminated from the game, better luck next time!");
-        //code removing from list when it gets sorted out
-    }
 
 }
