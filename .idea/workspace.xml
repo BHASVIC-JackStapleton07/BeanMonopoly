@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1d856ca-e875-4458-be54-4c46f99f9e3d" name="Changes" comment="nuffink">
+    <list default="true" id="f1d856ca-e875-4458-be54-4c46f99f9e3d" name="Changes" comment="lots of work on board">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Bean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
@@ -16,11 +16,7 @@
       <change beforePath="$PROJECT_DIR$/src/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayerManager.java" afterDir="false" />
     </list>
     <list id="036b7d7f-50a5-47ec-b266-967646ab3bf4" name="Changes by hugo.wilkinson23" comment="" />
-    <list id="4edf1d4f-7400-4703-b50f-7c3e547fa72c" name="Changes by thomas.smyth23" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Bean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayerManager.java" afterDir="false" />
-    </list>
+    <list id="4edf1d4f-7400-4703-b50f-7c3e547fa72c" name="Changes by thomas.smyth23" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,45 +31,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Bean.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="4" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-        <range start1="20" end1="20" start2="22" end2="25" changelist="4edf1d4f-7400-4703-b50f-7c3e547fa72c" />
-        <range start1="22" end1="23" start2="27" end2="28" changelist="4edf1d4f-7400-4703-b50f-7c3e547fa72c" />
-        <range start1="28" end1="29" start2="33" end2="34" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-        <range start1="34" end1="35" start2="39" end2="40" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-        <range start1="38" end1="39" start2="43" end2="44" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-        <range start1="42" end1="43" start2="47" end2="48" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-        <range start1="45" end1="45" start2="50" end2="58" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/PlayerManager.java">
-      <ranges>
-        <range start1="10" end1="10" start2="10" end2="12" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-        <range start1="12" end1="15" start2="14" end2="17" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-        <range start1="23" end1="25" start2="25" end2="26" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-        <range start1="37" end1="37" start2="38" end2="39" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-        <range start1="48" end1="49" start2="50" end2="55" changelist="4edf1d4f-7400-4703-b50f-7c3e547fa72c" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/Board.java">
-      <ranges>
-        <range start1="3" end1="3" start2="3" end2="4" changelist="4edf1d4f-7400-4703-b50f-7c3e547fa72c" />
-        <range start1="4" end1="4" start2="5" end2="6" changelist="4edf1d4f-7400-4703-b50f-7c3e547fa72c" />
-        <range start1="9" end1="9" start2="11" end2="15" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-        <range start1="24" end1="25" start2="30" end2="34" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-        <range start1="72" end1="73" start2="81" end2="82" changelist="4edf1d4f-7400-4703-b50f-7c3e547fa72c" />
-        <range start1="84" end1="84" start2="93" end2="95" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-        <range start1="85" end1="86" start2="96" end2="97" changelist="4edf1d4f-7400-4703-b50f-7c3e547fa72c" />
-        <range start1="101" end1="102" start2="112" end2="114" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-        <range start1="103" end1="105" start2="115" end2="141" changelist="4edf1d4f-7400-4703-b50f-7c3e547fa72c" />
-        <range start1="106" end1="107" start2="142" end2="148" changelist="4edf1d4f-7400-4703-b50f-7c3e547fa72c" />
-        <range start1="108" end1="108" start2="149" end2="150" changelist="4edf1d4f-7400-4703-b50f-7c3e547fa72c" />
-        <range start1="145" end1="145" start2="187" end2="193" changelist="f1d856ca-e875-4458-be54-4c46f99f9e3d" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -109,6 +66,13 @@
       <recent name="src" />
     </key>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-53826d6a" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -128,6 +92,7 @@
       <workItem from="1710162744420" duration="2766000" />
       <workItem from="1710423522142" duration="1359000" />
       <workItem from="1710498794866" duration="4384000" />
+      <workItem from="1710588233197" duration="11095000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1710162686299</created>
@@ -149,9 +114,21 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix" />
     <MESSAGE value="nuffink" />
-    <option name="LAST_COMMIT_MESSAGE" value="nuffink" />
+    <MESSAGE value="lots of work on board" />
+    <option name="LAST_COMMIT_MESSAGE" value="lots of work on board" />
   </component>
 </project>

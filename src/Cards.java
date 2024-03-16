@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class Cards {
 
-    private void createBeans(ArrayList<String> cards) {
-        //add beans (name, location, cost, tax)
+    private void createCards(ArrayList<String> cards) {
+        //add cards (name, location, cost, tax)
         cards.add("Bank error in your favor", 75);
         cards.add("Doctor's fees", -50);
         cards.add("Pay hospital fees", -100);

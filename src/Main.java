@@ -3,31 +3,37 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    Board board = new Board();
+    static Board board = new Board();
     DiceRoller dice = new DiceRoller();
-    MainForm mainForm = new MainForm();
+    static MainForm mainForm = new MainForm();
 
-    PlayerManager playerManager = new PlayerManager(); //makes player manager to store players
+    static PlayerManager playerManager = new PlayerManager(); //makes player manager to store players
 
-    ArrayList<Player> players = new ArrayList<>();
-    int numOfPlayers = playerManager.numOfPlayers;
-    public boolean gameWon = false;
+    static ArrayList<Player> players = new ArrayList<>();
+    public static int numOfPlayers = playerManager.numOfPlayers;
+    public static boolean gameWon = false;
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
         //create bean array
         ArrayList<Bean> beans = new ArrayList<>();
         createBeans(beans);
         players = PlayerManager.createPlayers(players, numOfPlayers);
 
         do {
-            board.turn(players, beans);
-        } while (gameWon);
+            for (int i = 0; i < numOfPlayers + 1; i++){
+                board.turn(players, beans, i); //does a turn for each player until gameWon = false
+            }
+            if (numOfPlayers == 1) {
+                String winnerName = players.get(0).PlayerName;
+                mainForm.outputConsoleText("Game over!! " + winnerName + " wins!");
+            }
+        } while (!gameWon);
     }
 
 
 
 
-    private void createBeans(ArrayList<Bean> beans) {
+    private static void createBeans(ArrayList<Bean> beans) {
         //add beans (name, location, cost, tax)
         beans.add(new Bean("Baked Bean", 1, 60, 10));
         beans.add(new Bean("Kidney Bean", 2, 60, 20));

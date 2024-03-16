@@ -57,4 +57,6 @@ public class Bean {
         return level;
     }
 
+    public String getName() { return name;}
+
 }

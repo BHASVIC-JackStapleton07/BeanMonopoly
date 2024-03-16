@@ -1,6 +1,5 @@
 package src;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,10 +11,12 @@ public class PlayerManager {
 
 
     //when passing parameters to remove player, remember to define a separate array in main or whatever medium to the players array list
-    public ArrayList<Player> removePlayer(int playerID) { //method to remove player if there balance hits 0
+    public void removePlayer(int playerID) { //method to remove player if there balance hits 0
         mainForm.outputConsoleText("Sorry " + players.get(playerID).PlayerName + " , but you have ran out of money, this means you have been eliminated from the game, better luck next time!");
         players.remove(playerID);
-        return players;
+        Main.numOfPlayers--;
+
+        //unown all beans player owned
     }
     public void playerWon(ArrayList<Player> players, int playerWhoWon) { //passes in array and the number of the player who won
         this.playerWon = playerWhoWon;

@@ -3,33 +3,28 @@ package src;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class MainForm {
     private JPanel mainPanel;
-    private JButton ROLLButton;
-    private JButton BUYUPGRADEButton;
-    private JButton CONTINUEButton;
+    public JButton BUYUPGRADEButton;
+    public JButton CONTINUEButton;
     private JTextArea consoleText;
     private JTextField answerField;
     public JTextPane boardDisplay;
+    public JLabel moneyLabel;
 
     DiceRoller dice = new DiceRoller();
 
     public MainForm() {
         boardDisplay.setEditable(false);
-        ROLLButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dice.rollDice();
-            }
-        });
-        BUYUPGRADEButton.addActionListener(new ActionListener() {
+        BUYUPGRADEButton.addActionListener(new ActionListener() { //UPGRADE / BUY
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        CONTINUEButton.addActionListener(new ActionListener() {
+        CONTINUEButton.addActionListener(new ActionListener() { //CONTINUE
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -45,8 +40,8 @@ public class MainForm {
         consoleText.setText("");
     }
 
-    public void updateMoneyBalance() {
-
+    public void updateMoneyBalanceDisplay(int playerID, ArrayList<Player> players) {
+        moneyLabel.setText("Money: " + players.get(playerID).MoneyBalance);
     }
 
 }
