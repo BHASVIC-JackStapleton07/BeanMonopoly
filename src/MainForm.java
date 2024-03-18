@@ -18,6 +18,7 @@ public class MainForm {
 
     public MainForm() {
         boardDisplay.setEditable(false);
+        mainPanel.
         BUYUPGRADEButton.addActionListener(new ActionListener() { //UPGRADE / BUY
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -30,6 +31,10 @@ public class MainForm {
 
             }
         });
+    }
+
+    public static void main(String[] args) {
+        MainForm myForm = bew
     }
 
     public void outputConsoleText(String string) {

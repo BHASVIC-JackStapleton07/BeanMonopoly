@@ -16,7 +16,9 @@ public class Main {
     public static void main(String[] args) {
         //create bean array
         ArrayList<Bean> beans = new ArrayList<>();
+        ArrayList<Cards> cards = new ArrayList<>();
         createBeans(beans);
+        createCards();
         players = PlayerManager.createPlayers(players, numOfPlayers);
 
         do {

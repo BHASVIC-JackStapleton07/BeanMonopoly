@@ -2,6 +2,7 @@ package src;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Board {
@@ -200,11 +201,13 @@ public class Board {
 
 
                 if (currentPlayer.landedOnCard) {
-                    int cardMoneyChange;
-                    Cards cards = new Cards();
-                    String card = cards.drawCard(Cards.cards);
-                    cardMoneyChange = scanner.nextInt();
+                    Random random = new Random();
+                    Cards cards = new Cards("", 0);
+                    int randomNum = random.nextInt(13);
+                    String cardText = cards.returnCardText(randomNum);
+                    int cardMoneyChange = cards.returnCardMoneyChange(randomNum);
                     currentPlayer.changeMoney(cardMoneyChange, players);
+                    checkBalance(counter, players);
                     mainForm.outputConsoleText(card);
 
                     //make sure all cards actually do something
