@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1d856ca-e875-4458-be54-4c46f99f9e3d" name="Changes" comment="lots of work on board">
-      <change beforePath="$PROJECT_DIR$/src/Cards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cards.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
     <list id="036b7d7f-50a5-47ec-b266-967646ab3bf4" name="Changes by hugo.wilkinson23" comment="" />
     <list id="4edf1d4f-7400-4703-b50f-7c3e547fa72c" name="Changes by thomas.smyth23" comment="" />

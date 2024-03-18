@@ -2,7 +2,7 @@ package src;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Player {
-    int MoneyBalance; //decide on starting balance later
+    int MoneyBalance = 2000; //decide on starting balance later
     int PlayerNumber; //stores player number
     int PlayerLocation = 0; //startPosition
     //board booleans
