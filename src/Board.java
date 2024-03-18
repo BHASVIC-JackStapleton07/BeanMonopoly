@@ -165,28 +165,28 @@ public class Board {
                         mainForm.BUYUPGRADEButton.setEnabled(true); //enable upgrade button
                         mainForm.CONTINUEButton.setEnabled(true); //enable button
 
-                        if (upgradebutton && beans.get(currentBean).getLevel() < 3) { //if upgrade button pressed and if not max level
+                        if (mainForm.buyUpgradeButtonPressed && beans.get(currentBean).getLevel() < 3) { //if upgrade button pressed and if not max level
                             beans.get(currentBean).upgrade(); //upgrade bean
                             int cost = beans.get(currentBean).getCost();
                             players.get(counter).changeMoney(-cost, players);
-                       } else if (continueButton) {
+                       } else if (mainForm.continueButtonPressed) {
                             continue;
                         }
                     } else if (!beans.get(currentBean).isBeanOwned()) { //if bean is unowned
                         mainForm.BUYUPGRADEButton.setEnabled(true); //enable buy button
                         mainForm.CONTINUEButton.setEnabled(true); //enable continue button
 
-                        if (buybutton) {
+                        if (mainForm.buyUpgradeButtonPressed) {
                             beans.get(currentBean).buyBean(counter); //buy bean
                             int cost = beans.get(currentBean).getCost();
                             players.get(counter).changeMoney(-cost, players); //spend money
 
                             mainForm.BUYUPGRADEButton.setEnabled(false); //disable buy button
                             mainForm.CONTINUEButton.setEnabled(false); //disable continue button
-                        } else if (continueButton) {
-                            continue;
+                        } else if (mainForm.continueButtonPressed) {
                             mainForm.BUYUPGRADEButton.setEnabled(false); //disable buy button
                             mainForm.CONTINUEButton.setEnabled(false); //disable continue button
+                            continue;
                         }
                     } else { //bean belongs to someone else
                         //tax
@@ -208,7 +208,7 @@ public class Board {
                     int cardMoneyChange = cards.returnCardMoneyChange(randomNum);
                     currentPlayer.changeMoney(cardMoneyChange, players);
                     checkBalance(counter, players);
-                    mainForm.outputConsoleText(card);
+                    mainForm.outputConsoleText(cardText);
 
                     //make sure all cards actually do something
                 }

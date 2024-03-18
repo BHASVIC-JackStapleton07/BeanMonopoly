@@ -14,27 +14,32 @@ public class MainForm {
     public JTextPane boardDisplay;
     public JLabel moneyLabel;
 
+    public boolean buyUpgradeButtonPressed;
+    public boolean continueButtonPressed;
+
     DiceRoller dice = new DiceRoller();
 
     public MainForm() {
         boardDisplay.setEditable(false);
-        mainPanel.
+        buyUpgradeButtonPressed = false; continueButtonPressed = false;
         BUYUPGRADEButton.addActionListener(new ActionListener() { //UPGRADE / BUY
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                buyUpgradeButtonPressed = true;
+                CONTINUEButton.setEnabled(false);
             }
         });
         CONTINUEButton.addActionListener(new ActionListener() { //CONTINUE
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                continueButtonPressed = true;
+                BUYUPGRADEButton.setEnabled(false);
             }
         });
     }
 
     public static void main(String[] args) {
-        MainForm myForm = bew
+        MainForm myForm = new MainForm();
     }
 
     public void outputConsoleText(String string) {
