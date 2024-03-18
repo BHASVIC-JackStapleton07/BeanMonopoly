@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class PlayerManager {
     static MainForm mainForm = new MainForm();
     ArrayList<Player> players = new ArrayList<>();
-    int playerWon;
+    static int playerWon;
     public int numOfPlayers;
 
 
@@ -18,8 +18,8 @@ public class PlayerManager {
 
         //un-own all beans player owned
     }
-    public void playerWon(ArrayList<Player> players, int playerWhoWon) { //passes in array and the number of the player who won
-        this.playerWon = playerWhoWon;
+    public static void playerWon(ArrayList<Player> players, int playerWhoWon) { //passes in array and the number of the player who won
+        playerWon = playerWhoWon;
         mainForm.outputConsoleText("Congratulations player, " + players.get(playerWhoWon - 1) + " , you have won Bean monopoly, you finished with a total balance of: " + players.get(playerWhoWon - 1).MoneyBalance + ".");
         System.exit(0);
     }

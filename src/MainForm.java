@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class MainForm {
+public class MainForm extends JFrame {
     private JPanel mainPanel;
     public JButton BUYUPGRADEButton;
     public JButton CONTINUEButton;
@@ -20,6 +20,10 @@ public class MainForm {
     DiceRoller dice = new DiceRoller();
 
     public MainForm() {
+        setContentPane(mainPanel);
+        setSize(400, 300);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
         boardDisplay.setEditable(false);
         buyUpgradeButtonPressed = false; continueButtonPressed = false;
         BUYUPGRADEButton.addActionListener(new ActionListener() { //UPGRADE / BUY
