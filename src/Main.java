@@ -21,15 +21,16 @@ public class Main {
         ArrayList<Cards> cards = new ArrayList<>();
         createBeans(beans);
         createCards(cards);
-        players = PlayerManager.createPlayers(players, numOfPlayers);
+        PlayerManager.createPlayers(players, numOfPlayers);
 
         do {
-            for (int i = 0; i < numOfPlayers + 1; i++){
+            for (int i = 0; i < numOfPlayers; i++){
                 board.turn(players, beans, i); //does a turn for each player until gameWon = false
-            }
-            if (numOfPlayers == 1) {
-                String winnerName = players.get(0).PlayerName;
-                mainForm.outputConsoleText("Game over!! " + winnerName + " wins!");
+                if (numOfPlayers == 1) {
+                    String winnerName = players.get(0).PlayerName;
+                    PlayerManager.playerWon(players, 0);
+
+                }
             }
         } while (!gameWon);
     }
