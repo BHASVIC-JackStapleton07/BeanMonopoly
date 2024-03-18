@@ -16,7 +16,7 @@ public class PlayerManager {
         players.remove(playerID);
         Main.numOfPlayers--;
 
-        //unown all beans player owned
+        //un-own all beans player owned
     }
     public void playerWon(ArrayList<Player> players, int playerWhoWon) { //passes in array and the number of the player who won
         this.playerWon = playerWhoWon;

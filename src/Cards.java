@@ -4,28 +4,32 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Cards {
-
-    private void createCards(ArrayList<String> cards) {
+    String textOutput;
+    int outcome = 0; //takes in amount of money to change
+    ArrayList<String> cards = new ArrayList<>();
+    private void createCards(ArrayList<Cards> cards) {
         //add cards (name, location, cost, tax)
-        cards.add("Bank error in your favor", 75);
-        cards.add("Doctor's fees", -50);
-        cards.add("Pay hospital fees", -100);
-        cards.add("Holiday fund matures", 100);
-        cards.add("Income tax refund", 20);
-        cards.add("It's your birthday", 60);
-        cards.add("Life insurance matures", 100);
-        cards.add("You inherit your Grandma's knitting set", 50);
-        cards.add("Sale of stock", 50);
-        cards.add("Receive consultancy fee", 25);
-        cards.add("Pay school fees", -50);
-        cards.add("You have won last place prize in a beauty contest", -10);
-        cards.add("You lose your insurance policy", -100);
-        cards.add("You have won a crossword competition", 100);
+        cards.add(new Cards("Bank error in your favor", 75));
+        cards.add(new Cards("Doctor's fees", -50));
+        cards.add(new Cards("Pay hospital fees", -100));
+        cards.add(new Cards("Holiday fund matures", 100));
+        cards.add(new Cards("Income tax refund", 20));
+        cards.add(new Cards("It's your birthday", 60));
+        cards.add(new Cards("Life insurance matures", 100));
+        cards.add(new Cards("You inherit your Grandma's knitting set", 50));
+        cards.add(new Cards("Sale of stock", 50));
+        cards.add(new Cards("Receive consultancy fee", 25));
+        cards.add(new Cards("Pay school fees", -50));
+        cards.add(new Cards("You have won last place prize in a beauty contest", -10));
+        cards.add(new Cards("You lose your insurance policy", -100));
+        cards.add(new Cards("You have won a crossword competition", 100));
     }
 
     private Random random;
 
-    public Cards() {
+    public Cards(String text, int moneyChange) { //passes in amount of money to change when card is pulled
+        this.textOutput = text;
+        this.outcome = moneyChange;
         random = new Random();
     }
 
