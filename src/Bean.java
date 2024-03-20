@@ -23,6 +23,9 @@ public class Bean {
     public Bean(){
 
     }
+    public void setStats(int level, int cost, int tax) { //resets all bean stats to 0 when player is removed
+        this.level = level ; this.cost = cost; this.tax = tax;
+    }
 
     //called when a bean is bought
     public void buyBean(int playerID) {

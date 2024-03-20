@@ -248,7 +248,7 @@ public class Board {
 
     public void checkBalance(int playerID, ArrayList<Player> players) {
         if (players.get(playerID).MoneyBalance <= 0) {
-            playerManager.removePlayer(playerID);
+            playerManager.removePlayer(playerID, players.get(playerID).beansOwned);
         }
     }
 }

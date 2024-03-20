@@ -11,8 +11,17 @@ public class PlayerManager {
 
 
     //when passing parameters to remove player, remember to define a separate array in main or whatever medium to the players array list
-    public void removePlayer(int playerID) { //method to remove player if there balance hits 0
+    public void removePlayer(int playerID, ArrayList<Bean> beanToRemove) { //method to remove player if their balance hits 0
         mainForm.outputConsoleText("Sorry " + players.get(playerID).PlayerName + " , but you have ran out of money, this means you have been eliminated from the game, better luck next time!");
+        int beanCounter;
+        int beanNumber = beanToRemove.size();
+        for (beanCounter = 0; beanCounter <= beanNumber ; beanCounter++ ) {
+            Bean currentBean = beanToRemove.get(beanCounter);
+            currentBean.setStats(0, 0 , 0);
+            beanToRemove.remove(beanCounter);
+            beanCounter++;
+
+        }
         players.remove(playerID);
         Main.numOfPlayers--;
 
