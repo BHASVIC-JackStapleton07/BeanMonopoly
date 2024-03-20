@@ -17,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
         //create bean array
-        Board.printBoard();
+        mainForm.printBoard(board.boardText);
         ArrayList<Bean> beans = new ArrayList<>();
         ArrayList<Cards> cards = new ArrayList<>();
         createBeans(beans);

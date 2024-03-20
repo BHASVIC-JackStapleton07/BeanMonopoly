@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class Board {
 
     static MainForm mainForm = new MainForm();
-    private static JTextPane boardDisplay;
     Bean bean = new Bean();
     Scanner scanner = new Scanner(System.in);
+    public String boardText = generateBoard();
 
     PlayerManager playerManager = new PlayerManager();
 
@@ -27,7 +27,7 @@ public class Board {
     }
 
     public Board() {
-        boardDisplay = new JTextPane();
+
         fillArray(boardPosArray);
         boardPosArray[0][0] = "1";
         boardPosArray[0][1] = "2";
@@ -37,15 +37,11 @@ public class Board {
         if (playerManager.numOfPlayers > 3) {
             boardPosArray[0][3] = "4";
         }
-        printBoard();
+        mainForm.printBoard(boardText);
     }
 
-    public JTextPane getTextPane() {
-        return boardDisplay;
-    }
 
-    public static void printBoard() {
-        boardDisplay.setEditable(false);
+    public static String generateBoard() {
         String boardText =
                 "\n" +
                         " START\n" +
@@ -73,8 +69,7 @@ public class Board {
                         " ----- ----- ----- ----- ----- ----- ----- ----- \n" +
                         "                                           MISS A\n" +
                         "                                             GO";
-        boardDisplay.setText("");
-        boardDisplay.setText(boardText);
+        return boardText;
     }
 
     public void movePlayerOnBoard(int playerID, int moveAmount, ArrayList<Player> players) {
@@ -112,7 +107,7 @@ public class Board {
         do { //does the loop and repeats if player lands a double
             if (!currentPlayer.missATurn) { //if loop that checks if player misses turn
                 currentPlayer.isDouble = false;
-                printBoard();
+                mainForm.printBoard(generateBoard());
                 mainForm.clearConsoleText();
                 mainForm.outputConsoleText("It is now the turn of " + (players.get(counter)) + ".");
                 mainForm.updateMoneyBalanceDisplay(counter, players);
