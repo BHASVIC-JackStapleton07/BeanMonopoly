@@ -20,10 +20,12 @@ public class MainForm extends JFrame {
     DiceRoller dice = new DiceRoller();
 
     public MainForm() {
+        consoleText.setEditable(true);
         setContentPane(mainPanel);
         setSize(400, 300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        consoleText.setText("hi");
         boardDisplay.setEditable(false);
         buyUpgradeButtonPressed = false; continueButtonPressed = false;
         BUYUPGRADEButton.addActionListener(new ActionListener() { //UPGRADE / BUY
@@ -56,6 +58,11 @@ public class MainForm extends JFrame {
 
     public void updateMoneyBalanceDisplay(int playerID, ArrayList<Player> players) {
         moneyLabel.setText("Money: " + players.get(playerID).MoneyBalance);
+    }
+
+    public void printBoard(String boardText) {
+        boardDisplay.setText(boardText);
+        boardDisplay.setEditable(false);
     }
 
 }
