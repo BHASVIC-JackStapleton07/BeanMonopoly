@@ -33,7 +33,7 @@ public class PlayerManager {
         System.exit(0);
     }
 
-    public static ArrayList<Player> createPlayers(ArrayList<Player> players, int numOfPlayers) {
+    public static void createPlayers(ArrayList<Player> players, int numOfPlayers) {
         String playingPiece;
         int stringLength;
         String name;
@@ -77,6 +77,5 @@ public class PlayerManager {
             Player player = new Player(i, name, playingPiece);
             players.add(player);
         }
-        return players;
     }
 }
