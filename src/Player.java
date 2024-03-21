@@ -36,7 +36,7 @@ public class Player {
     public void changeMoney(int moneyAmount, ArrayList<Player> players) {  //takes certain amount of money and passes it into method so that method knows how much money to add (eg 1000 for landing on go 500 for passing go)
         MoneyBalance = MoneyBalance + moneyAmount; //can pass in negative parameter to decrease money
         mainForm.updateMoneyBalanceDisplay((PlayerNumber - 1), players);
-        board.checkBalance(PlayerNumber - 1, players);
+        board.checkBalance(PlayerNumber - 1, players, mainForm);
     }
 
     public ArrayList<Bean> getBeansOwned() {

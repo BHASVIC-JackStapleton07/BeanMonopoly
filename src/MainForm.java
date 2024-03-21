@@ -1,6 +1,7 @@
 package src;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -9,17 +10,18 @@ public class MainForm extends JFrame {
     private JPanel mainPanel;
     public JButton BUYUPGRADEButton;
     public JButton CONTINUEButton;
-    public JTextArea consoleText;
     private JTextField answerField;
     public JTextPane boardDisplay;
     public JLabel moneyLabel;
+    public JTextArea consoleText;
+    public JScrollPane scrollPane;
 
     public boolean buyUpgradeButtonPressed;
     public boolean continueButtonPressed;
 
-    DiceRoller dice = new DiceRoller();
 
     public MainForm() {
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         consoleText.setEditable(false);
         setContentPane(mainPanel);
         setSize(400, 300);
@@ -27,7 +29,8 @@ public class MainForm extends JFrame {
         setVisible(true);
         outputConsoleText("Welcome to Beanopoly!");
         boardDisplay.setEditable(false);
-        buyUpgradeButtonPressed = false; continueButtonPressed = false;
+        buyUpgradeButtonPressed = false;
+        continueButtonPressed = false;
         BUYUPGRADEButton.addActionListener(new ActionListener() { //UPGRADE / BUY
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -46,12 +49,15 @@ public class MainForm extends JFrame {
 
     public static void main(String[] args) {
         MainForm myForm = new MainForm();
-        //SwingUtilities.invokeLater(MainForm::new);
+        SwingUtilities.invokeLater(MainForm::new);
     }
 
     public void outputConsoleText(String string) {
         consoleText.append("\n" + string);
+        //scroll down
+        consoleText.setCaretPosition(consoleText.getDocument().getLength());
     }
+
 
     public void clearConsoleText() {
         consoleText.setText("");
@@ -67,7 +73,24 @@ public class MainForm extends JFrame {
     }
 
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+    private String inputText = "";
+
+    public String getAnswerFieldText() {
+        answerField.setEditable(true);
+        answerField.requestFocusInWindow();
+
+        // enter key listener
+        answerField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String text = answerField.getText().trim();
+                inputText = text; // store text entered
+                answerField.setText(""); // clear text
+                answerField.setEditable(false);
+            }
+        });
+
+        return inputText;
     }
 }
+

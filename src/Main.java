@@ -17,6 +17,8 @@ public class Main {
 
     public static void main(String[] args) {
         //create bean array
+        mainForm.BUYUPGRADEButton.setEnabled(false);
+        mainForm.CONTINUEButton.setEnabled(false);
         ArrayList<Bean> beans = new ArrayList<>();
         ArrayList<Cards> cards = new ArrayList<>();
         createBeans(beans);
@@ -25,7 +27,7 @@ public class Main {
 
         do {
             for (int i = 0; i < numOfPlayers; i++){
-                board.turn(players, beans, i); //does a turn for each player until gameWon = false
+                board.turn(players, beans, i, mainForm); //does a turn for each player until gameWon = false
                 if (numOfPlayers == 1) {
                     String winnerName = players.get(0).PlayerName;
                     PlayerManager.playerWon(players, 0, mainForm);

@@ -38,18 +38,15 @@ public class PlayerManager {
         String name;
         int nameLength;
         int numOfPlayers = 0;
-        Scanner scanner = new Scanner(System.in);
         do {
             mainForm.outputConsoleText("How many players will be playing this game of Bean monopoly? (2-4): ");
-            numOfPlayers = Integer.valueOf(scanner.nextLine());
+            numOfPlayers = Integer.valueOf(mainForm.getAnswerFieldText());
         } while (numOfPlayers < 2 || numOfPlayers > 4);
         //validates if the correct number of players are playing
         for (int i = 1; i <= numOfPlayers; i++) {
-
-            mainForm.clearConsoleText();
             do {
                 mainForm.outputConsoleText("What is player " + i + "'s username?: (Please keep your username under 10 characters.)");
-                name = scanner.nextLine();
+                name = mainForm.getAnswerFieldText();
                 nameLength = name.length();
                 if (nameLength > 10) {
                     mainForm.outputConsoleText("This is not a valid name, as it is over 10 characters,\n please try again.");
@@ -62,11 +59,11 @@ public class PlayerManager {
                     mainForm.outputConsoleText("Ethen, you lose.");
                     System.exit(0);
                 }
-            } while (nameLength <= 10); //code to validate a string input
+            } while (nameLength >= 10); //code to validate a string input
 
             do {
                 mainForm.outputConsoleText("What would you like your playing piece to be, you can choose one ASCII character:");
-                playingPiece = scanner.nextLine();
+                playingPiece = mainForm.getAnswerFieldText();
                 stringLength = playingPiece.length();
                 if (stringLength != 1) {
                     mainForm.outputConsoleText("Sorry, your playing piece can only be one character, please try again.");

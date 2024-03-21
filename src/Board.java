@@ -7,9 +7,7 @@ import java.util.Scanner;
 
 public class Board {
 
-    static MainForm mainForm = new MainForm();
     Bean bean = new Bean();
-    Scanner scanner = new Scanner(System.in);
     public String boardText = generateBoard();
 
     PlayerManager playerManager = new PlayerManager();
@@ -37,7 +35,6 @@ public class Board {
         if (playerManager.numOfPlayers > 3) {
             boardPosArray[0][3] = "4";
         }
-        mainForm.printBoard(boardText);
     }
 
 
@@ -84,7 +81,7 @@ public class Board {
     DiceRoller dice = new DiceRoller();
 
 
-    public void turn(ArrayList<Player> players, ArrayList<Bean> beans, int playerTurn) {
+    public void turn(ArrayList<Player> players, ArrayList<Bean> beans, int playerTurn, MainForm mainForm) {
         int counter = playerTurn;
 
         Player currentPlayer = players.get(counter);
@@ -190,7 +187,7 @@ public class Board {
                         int ownerID = beans.get(currentBean).getOwnerID();
                         currentPlayer.changeMoney(-(tax * (level + 1)), players);//remove money from taxed player
                         players.get(ownerID).changeMoney((tax) * (level + 1), players); //give money to owner of bean
-                        checkBalance(counter, players); //check if in debt
+                        checkBalance(counter, players, mainForm); //check if in debt
                     }
                 }
 
@@ -202,7 +199,7 @@ public class Board {
                     String cardText = cards.returnCardText(randomNum);
                     int cardMoneyChange = cards.returnCardMoneyChange(randomNum);
                     currentPlayer.changeMoney(cardMoneyChange, players);
-                    checkBalance(counter, players);
+                    checkBalance(counter, players, mainForm);
                     mainForm.outputConsoleText(cardText);
 
                     //make sure all cards actually do something
@@ -241,7 +238,7 @@ public class Board {
         } while (currentPlayer.isDouble);
     }
 
-    public void checkBalance(int playerID, ArrayList<Player> players) {
+    public void checkBalance(int playerID, ArrayList<Player> players, MainForm mainForm) {
         if (players.get(playerID).MoneyBalance <= 0) {
             playerManager.removePlayer(playerID, players.get(playerID).beansOwned, mainForm);
         }
