@@ -17,19 +17,18 @@ public class Main {
 
     public static void main(String[] args) {
         //create bean array
-        mainForm.printBoard(board.boardText);
         ArrayList<Bean> beans = new ArrayList<>();
         ArrayList<Cards> cards = new ArrayList<>();
         createBeans(beans);
         createCards(cards);
-        PlayerManager.createPlayers(players, numOfPlayers);
+        PlayerManager.createPlayers(players, mainForm);
 
         do {
             for (int i = 0; i < numOfPlayers; i++){
                 board.turn(players, beans, i); //does a turn for each player until gameWon = false
                 if (numOfPlayers == 1) {
                     String winnerName = players.get(0).PlayerName;
-                    PlayerManager.playerWon(players, 0);
+                    PlayerManager.playerWon(players, 0, mainForm);
 
                 }
             }

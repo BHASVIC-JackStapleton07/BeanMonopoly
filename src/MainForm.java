@@ -9,7 +9,7 @@ public class MainForm extends JFrame {
     private JPanel mainPanel;
     public JButton BUYUPGRADEButton;
     public JButton CONTINUEButton;
-    private JTextArea consoleText;
+    public JTextArea consoleText;
     private JTextField answerField;
     public JTextPane boardDisplay;
     public JLabel moneyLabel;
@@ -20,12 +20,12 @@ public class MainForm extends JFrame {
     DiceRoller dice = new DiceRoller();
 
     public MainForm() {
-        consoleText.setEditable(true);
+        consoleText.setEditable(false);
         setContentPane(mainPanel);
         setSize(400, 300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        consoleText.setText("hi");
+        outputConsoleText("Welcome to Beanopoly!");
         boardDisplay.setEditable(false);
         buyUpgradeButtonPressed = false; continueButtonPressed = false;
         BUYUPGRADEButton.addActionListener(new ActionListener() { //UPGRADE / BUY
@@ -46,6 +46,7 @@ public class MainForm extends JFrame {
 
     public static void main(String[] args) {
         MainForm myForm = new MainForm();
+        //SwingUtilities.invokeLater(MainForm::new);
     }
 
     public void outputConsoleText(String string) {
@@ -65,4 +66,8 @@ public class MainForm extends JFrame {
         boardDisplay.setEditable(false);
     }
 
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }

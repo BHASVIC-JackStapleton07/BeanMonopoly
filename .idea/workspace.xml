@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f1d856ca-e875-4458-be54-4c46f99f9e3d" name="Changes" comment="lots of work on board">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BeanMonopoly/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BeanMonopoly/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayerManager.java" afterDir="false" />
     </list>
     <list id="036b7d7f-50a5-47ec-b266-967646ab3bf4" name="Changes by hugo.wilkinson23" comment="" />
@@ -40,7 +40,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Debug",
+    "Application.Main.executor": "Run",
     "Application.MainForm.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -65,7 +65,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-53826d6a" />
       </set>
     </attachedChunks>
   </component>
@@ -92,6 +92,7 @@
       <workItem from="1710765202896" duration="812000" />
       <workItem from="1710923498610" duration="4626000" />
       <workItem from="1710926148123" duration="682000" />
+      <workItem from="1711017876190" duration="1590000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1710162686299</created>

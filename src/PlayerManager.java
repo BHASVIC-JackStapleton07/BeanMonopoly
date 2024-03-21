@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PlayerManager {
-    static MainForm mainForm = new MainForm();
     ArrayList<Player> players = new ArrayList<>();
     static int playerWon;
     public int numOfPlayers;
 
 
     //when passing parameters to remove player, remember to define a separate array in main or whatever medium to the players array list
-    public void removePlayer(int playerID, ArrayList<Bean> beanToRemove) { //method to remove player if their balance hits 0
+    public void removePlayer(int playerID, ArrayList<Bean> beanToRemove, MainForm mainForm) { //method to remove player if their balance hits 0
         mainForm.outputConsoleText("Sorry " + players.get(playerID).PlayerName + " , but you have ran out of money, this means you have been eliminated from the game, better luck next time!");
         int beanCounter;
         int beanNumber = beanToRemove.size();
@@ -27,20 +26,21 @@ public class PlayerManager {
 
         //un-own all beans player owned
     }
-    public static void playerWon(ArrayList<Player> players, int playerWhoWon) { //passes in array and the number of the player who won
+    public static void playerWon(ArrayList<Player> players, int playerWhoWon, MainForm mainForm) { //passes in array and the number of the player who won
         playerWon = playerWhoWon;
-        mainForm.outputConsoleText("Congratulations player, " + players.get(playerWhoWon - 1) + " , you have won Bean monopoly, you finished with a total balance of: " + players.get(playerWhoWon - 1).MoneyBalance + ".");
+        mainForm.outputConsoleText("Congratulations player, " + players.get(playerWhoWon - 1) + " , you have won Bean monopoly.\n you finished with a total balance of: " + players.get(playerWhoWon - 1).MoneyBalance + ".");
         System.exit(0);
     }
 
-    public static void createPlayers(ArrayList<Player> players, int numOfPlayers) {
+    public static void createPlayers(ArrayList<Player> players, MainForm mainForm) {
         String playingPiece;
         int stringLength;
         String name;
         int nameLength;
+        int numOfPlayers = 0;
         Scanner scanner = new Scanner(System.in);
         do {
-            mainForm.outputConsoleText("How many players will be playing this game of Bean monopoly, please note that the minimum number of players is 2, and the maximum number of players is 4:");
+            mainForm.outputConsoleText("How many players will be playing this game of Bean monopoly? (2-4): ");
             numOfPlayers = Integer.valueOf(scanner.nextLine());
         } while (numOfPlayers < 2 || numOfPlayers > 4);
         //validates if the correct number of players are playing
@@ -52,7 +52,7 @@ public class PlayerManager {
                 name = scanner.nextLine();
                 nameLength = name.length();
                 if (nameLength > 10) {
-                    mainForm.outputConsoleText("This is not a valid name, as it is over 10 characters, please try again.");
+                    mainForm.outputConsoleText("This is not a valid name, as it is over 10 characters,\n please try again.");
                 }
                 if (name.equals("Ben")) {
                     mainForm.outputConsoleText("Congrats, You win!");

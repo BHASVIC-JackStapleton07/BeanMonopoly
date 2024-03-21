@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1d856ca-e875-4458-be54-4c46f99f9e3d" name="Changes" comment="lots of work on board">
-
-      <change beforePath="$PROJECT_DIR$/out/production/BeanMonopoly/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BeanMonopoly/.idea/workspace.xml" afterDir="false" />
-
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/src/MainForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm.java" afterDir="false" />
     </list>
     <list id="036b7d7f-50a5-47ec-b266-967646ab3bf4" name="Changes by hugo.wilkinson23" comment="" />
     <list id="4edf1d4f-7400-4703-b50f-7c3e547fa72c" name="Changes by thomas.smyth23" comment="" />
@@ -43,7 +38,8 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.MainForm.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -67,7 +63,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-53826d6a" />
       </set>
     </attachedChunks>
   </component>
@@ -92,8 +88,9 @@
       <workItem from="1710498794866" duration="4384000" />
       <workItem from="1710588233197" duration="11095000" />
       <workItem from="1710765202896" duration="812000" />
-
-      <workItem from="1710923498610" duration="320000" />
+      <workItem from="1710923498610" duration="4626000" />
+      <workItem from="1710926148123" duration="682000" />
+      <workItem from="1711017876190" duration="500000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1710162686299</created>
@@ -131,5 +128,16 @@
     <MESSAGE value="nuffink" />
     <MESSAGE value="lots of work on board" />
     <option name="LAST_COMMIT_MESSAGE" value="lots of work on board" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
