@@ -62,7 +62,7 @@ public class PlayerManager {
                     mainForm.outputConsoleText("Ethen, you lose.");
                     System.exit(0);
                 }
-            } while (nameLength <= 10); //code to validate a sting input
+            } while (nameLength <= 10); //code to validate a string input
 
             do {
                 mainForm.outputConsoleText("What would you like your playing piece to be, you can choose one ASCII character:");
