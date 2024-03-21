@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
 
 public class MainForm extends JFrame {
     private JPanel mainPanel;
@@ -31,21 +32,23 @@ public class MainForm extends JFrame {
         boardDisplay.setEditable(false);
         buyUpgradeButtonPressed = false;
         continueButtonPressed = false;
-        BUYUPGRADEButton.addActionListener(new ActionListener() { //UPGRADE / BUY
+        // Action listener for BUYUPGRADEButton
+        BUYUPGRADEButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buyUpgradeButtonPressed = true;
-                CONTINUEButton.setEnabled(false);
             }
         });
-        CONTINUEButton.addActionListener(new ActionListener() { //CONTINUE
+
+// Action listener for CONTINUEButton
+        CONTINUEButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 continueButtonPressed = true;
-                BUYUPGRADEButton.setEnabled(false);
             }
         });
     }
+
 
     public static void main(String[] args) {
         MainForm myForm = new MainForm();
@@ -73,24 +76,44 @@ public class MainForm extends JFrame {
     }
 
 
-    private String inputText = "";
 
     public String getAnswerFieldText() {
         answerField.setEditable(true);
-        answerField.requestFocusInWindow();
 
-        // enter key listener
+        // Create a mutable container for input text and input received flag
+        class InputContainer {
+            String text = "";
+            boolean received = false;
+        }
+
+        InputContainer inputContainer = new InputContainer();
+
+        // Enter key listener
         answerField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String text = answerField.getText().trim();
-                inputText = text; // store text entered
-                answerField.setText(""); // clear text
+                if (!text.isEmpty()) {
+                    inputContainer.text = text; // Store text entered
+                    inputContainer.received = true; // Set input flag to true
+                }
+                answerField.setText(""); // Clear text
                 answerField.setEditable(false);
             }
         });
 
-        return inputText;
+        // Wait until input is received
+        while (!inputContainer.received) {
+            try {
+                Thread.sleep(100); // Wait for a short interval before checking again
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+        return inputContainer.text;
     }
+
+
 }
 

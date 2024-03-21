@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class PlayerManager {
     ArrayList<Player> players = new ArrayList<>();
     static int playerWon;
-    public int numOfPlayers;
+    public static int numOfPlayers;
 
 
     //when passing parameters to remove player, remember to define a separate array in main or whatever medium to the players array list
@@ -18,7 +18,6 @@ public class PlayerManager {
             Bean currentBean = beanToRemove.get(beanCounter);
             currentBean.setStats(0, 0 , 0);
             beanToRemove.remove(beanCounter);
-            beanCounter++;
 
         }
         players.remove(playerID);
@@ -37,10 +36,14 @@ public class PlayerManager {
         int stringLength;
         String name;
         int nameLength;
-        int numOfPlayers = 0;
         do {
             mainForm.outputConsoleText("How many players will be playing this game of Bean monopoly? (2-4): ");
-            numOfPlayers = Integer.valueOf(mainForm.getAnswerFieldText());
+            String input = mainForm.getAnswerFieldText();
+            if (input.isEmpty()) {
+                mainForm.outputConsoleText("Please enter a valid number of players.");
+                continue;
+            }
+            numOfPlayers = Integer.parseInt(input);
         } while (numOfPlayers < 2 || numOfPlayers > 4);
         //validates if the correct number of players are playing
         for (int i = 1; i <= numOfPlayers; i++) {
@@ -68,7 +71,7 @@ public class PlayerManager {
                 if (stringLength != 1) {
                     mainForm.outputConsoleText("Sorry, your playing piece can only be one character, please try again.");
                 }
-            } while (stringLength == 1);
+            } while (stringLength != 1);
 
             mainForm.outputConsoleText("Welcome to Bean monopoly " + name + " ,happy playing!");
             Player player = new Player(i, name, playingPiece);

@@ -15,7 +15,7 @@ public class Player {
     boolean landOnBean;
 
     Scanner scanner = new Scanner(System.in);
-    MainForm mainForm = new MainForm();
+
     Board board = new Board();
     String PlayerName;  //stores name of the player
     String playingPiece; //stores player piece, can change into a graphic once swing is set up
@@ -33,7 +33,7 @@ public class Player {
         landOnGo = false; passGo = false; landOnBean = false;
     }
 
-    public void changeMoney(int moneyAmount, ArrayList<Player> players) {  //takes certain amount of money and passes it into method so that method knows how much money to add (eg 1000 for landing on go 500 for passing go)
+    public void changeMoney(int moneyAmount, ArrayList<Player> players, MainForm mainForm) {  //takes certain amount of money and passes it into method so that method knows how much money to add (eg 1000 for landing on go 500 for passing go)
         MoneyBalance = MoneyBalance + moneyAmount; //can pass in negative parameter to decrease money
         mainForm.updateMoneyBalanceDisplay((PlayerNumber - 1), players);
         board.checkBalance(PlayerNumber - 1, players, mainForm);

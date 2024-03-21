@@ -10,7 +10,7 @@ public class Main {
     static PlayerManager playerManager = new PlayerManager(); //makes player manager to store players
 
     static ArrayList<Player> players = new ArrayList<>();
-    public static int numOfPlayers = playerManager.numOfPlayers;
+    public static int numOfPlayers;
     public static boolean gameWon = false;
 
     Cards cards = new Cards("", 0);
@@ -24,6 +24,7 @@ public class Main {
         createBeans(beans);
         createCards(cards);
         PlayerManager.createPlayers(players, mainForm);
+        numOfPlayers = playerManager.numOfPlayers;
 
         do {
             for (int i = 0; i < numOfPlayers; i++){
@@ -34,6 +35,7 @@ public class Main {
 
                 }
             }
+            numOfPlayers = playerManager.numOfPlayers;
         } while (!gameWon);
     }
 

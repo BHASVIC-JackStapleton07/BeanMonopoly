@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.CountDownLatch;
 
 public class Board {
 
@@ -103,10 +104,11 @@ public class Board {
 
         do { //does the loop and repeats if player lands a double
             if (!currentPlayer.missATurn) { //if loop that checks if player misses turn
+                diceRoller.rollDice();
+
                 currentPlayer.isDouble = false;
                 mainForm.printBoard(generateBoard());
-                mainForm.clearConsoleText();
-                mainForm.outputConsoleText("It is now the turn of " + (players.get(counter)) + ".");
+                mainForm.outputConsoleText("\nIt is now " + (players.get(counter).PlayerName) + "'s turn.");
                 mainForm.updateMoneyBalanceDisplay(counter, players);
                 mainForm.outputConsoleText("Dice 1: " + diceRoller.dice1);
                 mainForm.outputConsoleText("Dice 2: " + diceRoller.dice2);
@@ -147,96 +149,135 @@ public class Board {
                     String isOwnedText = beans.get(currentBean).isBeanOwned() ? "Yes" : "False";
 
                     //print bean information
-                    mainForm.outputConsoleText("You landed on: " + currentBeanName + "\n" +
-                            "Level: " + currentBeanLevel + "\n" +
-                            "Cost to buy: " + currentBeanCost + "\n" +
-                            "Tax Level 0/1/2/3: " + currentBeanTax + "/" + (currentBeanTax * 2) + "/" + (currentBeanTax * 3) + "/" + (currentBeanTax * 4) + "\n" +
-                            "Owned: " + isOwnedText);
+                    mainForm.outputConsoleText("\tYou landed on: " + currentBeanName + "\n" +
+                            "\tLevel: " + currentBeanLevel + "\n" +
+                            "\tCost to buy: " + currentBeanCost + "\n" +
+                            "\tTax Level 0/1/2/3: " + currentBeanTax + "/" + (currentBeanTax * 2) + "/" + (currentBeanTax * 3) + "/" + (currentBeanTax * 4) + "\n" +
+                            "\tOwned: " + isOwnedText);
 
                     if (beans.get(currentBean).getOwnerID() == counter) { // if you own the bean
                         mainForm.BUYUPGRADEButton.setEnabled(true); //enable upgrade button
                         mainForm.CONTINUEButton.setEnabled(true); //enable button
 
+                        while (!mainForm.continueButtonPressed && !mainForm.buyUpgradeButtonPressed) {
+                            try {
+                                // Sleep for 0.5 seconds (500 milliseconds)
+                                Thread.sleep(500);
+                            } catch (InterruptedException e) {
+                                // Handle the InterruptedException if needed
+                                e.printStackTrace();
+                            }
+                        }
+
                         if (mainForm.buyUpgradeButtonPressed && beans.get(currentBean).getLevel() < 3) { //if upgrade button pressed and if not max level
                             beans.get(currentBean).upgrade(); //upgrade bean
                             int cost = beans.get(currentBean).getCost();
-                            players.get(counter).changeMoney(-cost, players);
-                       } else if (mainForm.continueButtonPressed) {
+                            players.get(counter).changeMoney(-cost, players, mainForm);
+                            mainForm.buyUpgradeButtonPressed = false;
+                        } else if (mainForm.continueButtonPressed) {
+                            mainForm.continueButtonPressed = false;
                             continue;
                         }
                     } else if (!beans.get(currentBean).isBeanOwned()) { //if bean is unowned
-                        mainForm.BUYUPGRADEButton.setEnabled(true); //enable buy button
-                        mainForm.CONTINUEButton.setEnabled(true); //enable continue button
+                            mainForm.BUYUPGRADEButton.setEnabled(true); //enable buy button
+                            mainForm.CONTINUEButton.setEnabled(true); //enable continue button
 
-                        if (mainForm.buyUpgradeButtonPressed) {
-                            beans.get(currentBean).buyBean(counter); //buy bean
-                            int cost = beans.get(currentBean).getCost();
-                            players.get(counter).changeMoney(-cost, players); //spend money
-
-                            mainForm.BUYUPGRADEButton.setEnabled(false); //disable buy button
-                            mainForm.CONTINUEButton.setEnabled(false); //disable continue button
-                        } else if (mainForm.continueButtonPressed) {
-                            mainForm.BUYUPGRADEButton.setEnabled(false); //disable buy button
-                            mainForm.CONTINUEButton.setEnabled(false); //disable continue button
-                            continue;
+                        while (!mainForm.continueButtonPressed && !mainForm.buyUpgradeButtonPressed) {
+                            try {
+                                // Sleep for 0.5 seconds (500 milliseconds)
+                                Thread.sleep(500);
+                            } catch (InterruptedException e) {
+                                // Handle the InterruptedException if needed
+                                e.printStackTrace();
+                            }
                         }
-                    } else { //bean belongs to someone else
-                        //tax
-                        int level = beans.get(currentBean).getLevel();
-                        int tax = beans.get(currentBean).getTax();
-                        int ownerID = beans.get(currentBean).getOwnerID();
-                        currentPlayer.changeMoney(-(tax * (level + 1)), players);//remove money from taxed player
-                        players.get(ownerID).changeMoney((tax) * (level + 1), players); //give money to owner of bean
-                        checkBalance(counter, players, mainForm); //check if in debt
+
+                            if (mainForm.buyUpgradeButtonPressed) {
+                                beans.get(currentBean).buyBean(counter); //buy bean
+                                int cost = beans.get(currentBean).getCost();
+                                players.get(counter).changeMoney(-cost, players, mainForm); //spend money
+
+                                mainForm.BUYUPGRADEButton.setEnabled(false); //disable buy button
+                                mainForm.CONTINUEButton.setEnabled(false); //disable continue button
+                                mainForm.buyUpgradeButtonPressed = false;
+                            } else if (mainForm.continueButtonPressed) {
+                                mainForm.BUYUPGRADEButton.setEnabled(false); //disable buy button
+                                mainForm.CONTINUEButton.setEnabled(false); //disable continue button
+                                mainForm.continueButtonPressed = false;
+                                continue;
+                            }
+                        } else { //bean belongs to someone else
+                            //tax
+                            int level = beans.get(currentBean).getLevel();
+                            int tax = beans.get(currentBean).getTax();
+                            int ownerID = beans.get(currentBean).getOwnerID();
+                            currentPlayer.changeMoney(-(tax * (level + 1)), players, mainForm);//remove money from taxed player
+                            players.get(ownerID).changeMoney((tax) * (level + 1), players, mainForm); //give money to owner of bean
+                            checkBalance(counter, players, mainForm); //check if in debt
+                            mainForm.continueButtonPressed = false;
+                            mainForm.buyUpgradeButtonPressed = false;
+                        }
+                    }
+
+
+                    if (currentPlayer.landedOnCard) {
+                        Random random = new Random();
+                        Cards cards = new Cards("", 0);
+                        int randomNum = random.nextInt(13);
+                        String cardText = cards.returnCardText(randomNum);
+                        int cardMoneyChange = cards.returnCardMoneyChange(randomNum);
+                        currentPlayer.changeMoney(cardMoneyChange, players, mainForm);
+                        checkBalance(counter, players, mainForm);
+                        mainForm.outputConsoleText(cardText);
+
+                        //make sure all cards actually do something
+                    }
+
+                    if (currentPlayer.landOnGo) {
+                        currentPlayer.changeMoney(1000, players, mainForm);
+                        mainForm.outputConsoleText("You landed on go! Your balance has increased by 1000.");
+
+                    }
+
+                    if (currentPlayer.passGo) {
+                        currentPlayer.changeMoney(500, players, mainForm);
+                        mainForm.outputConsoleText("You passed go! Your balance has increased by 500.");
+                    }
+
+                    if (currentPlayer.landedOnMissATurn) {
+                        currentPlayer.missATurn = true;
+                        mainForm.outputConsoleText("You landed on miss a turn! Sorry, but your next turn will be skipped!");
+                        if (currentPlayer.isDouble) {
+                            mainForm.outputConsoleText("Even though you rolled a double, since you landed on miss a turn, you wont be able to roll again, bad luck!"); //giving user explanation, so it doesn't come off as a bug
+                            currentPlayer.isDouble = false; //makes sure player cant roll again if they land on miss a turn
+                        }
+                    }
+                } else {
+                    mainForm.outputConsoleText("You landed on miss a turn, so your turn has been skipped!");
+                    currentPlayer.missATurn = false;
+                }
+
+                mainForm.CONTINUEButton.setEnabled(true);
+                while (!mainForm.continueButtonPressed) {
+                    try {
+                        // Sleep for 0.5 seconds (500 milliseconds)
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        // Handle the InterruptedException if needed
+                        e.printStackTrace();
                     }
                 }
+                mainForm.CONTINUEButton.setEnabled(false);
+                mainForm.continueButtonPressed = false;
 
-
-                if (currentPlayer.landedOnCard) {
-                    Random random = new Random();
-                    Cards cards = new Cards("", 0);
-                    int randomNum = random.nextInt(13);
-                    String cardText = cards.returnCardText(randomNum);
-                    int cardMoneyChange = cards.returnCardMoneyChange(randomNum);
-                    currentPlayer.changeMoney(cardMoneyChange, players);
-                    checkBalance(counter, players, mainForm);
-                    mainForm.outputConsoleText(cardText);
-
-                    //make sure all cards actually do something
+                if (counter == 3) {
+                    counter = 0;
+                } else {
+                    counter++;
                 }
 
-                if (currentPlayer.landOnGo) {
-                    currentPlayer.changeMoney(1000, players);
-                    mainForm.outputConsoleText("You landed on go! Your balance has increased by 1000.");
-
-                }
-
-                if (currentPlayer.passGo) {
-                    currentPlayer.changeMoney(500, players);
-                    mainForm.outputConsoleText("You passed go! Your balance has increased by 500.");
-                }
-
-                if (currentPlayer.landedOnMissATurn) {
-                    currentPlayer.missATurn = true;
-                    mainForm.outputConsoleText("You landed on miss a turn! Sorry, but your next turn will be skipped!");
-                    if (currentPlayer.isDouble) {
-                        mainForm.outputConsoleText("Even though you rolled a double, since you landed on miss a turn, you wont be able to roll again, bad luck!"); //giving user explanation, so it doesn't come off as a bug
-                        currentPlayer.isDouble = false; //makes sure player cant roll again if they land on miss a turn
-                    }
-                }
-            } else {
-                mainForm.outputConsoleText("You landed on miss a turn, so your turn has been skipped!");
-                currentPlayer.missATurn = false;
-            }
-
-            if (counter == 3) {
-                counter = 0;
-            } else {
-                counter++;
-            }
-
-        } while (currentPlayer.isDouble);
-    }
+            } while (currentPlayer.isDouble) ;
+        }
 
     public void checkBalance(int playerID, ArrayList<Player> players, MainForm mainForm) {
         if (players.get(playerID).MoneyBalance <= 0) {
