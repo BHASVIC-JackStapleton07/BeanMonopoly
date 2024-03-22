@@ -62,7 +62,7 @@
           </grid>
         </constraints>
         <properties>
-          <font name="Monospaced"/>
+          <font name="Monospaced" size="18"/>
           <text value=""/>
         </properties>
       </component>

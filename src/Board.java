@@ -70,13 +70,14 @@ public class Board {
         return boardText;
     }
 
-    public void movePlayerOnBoard(int playerID, int moveAmount, ArrayList<Player> players) {
+    public void movePlayerOnBoard(int playerID, int moveAmount, ArrayList<Player> players, MainForm mainForm) {
         boardPosArray[players.get(playerID).PlayerLocation][playerID] = " "; //set previous location to blank
         players.get(playerID).PlayerLocation += moveAmount; //move player
         if (players.get(playerID).PlayerLocation >= 26) { //if passed go
             players.get(playerID).PlayerLocation -= 26; //set location back to 0
         }
         boardPosArray[players.get(playerID).PlayerLocation][playerID] = players.get(playerID).playingPiece;
+        mainForm.printBoard(generateBoard());
     }
 
     DiceRoller dice = new DiceRoller();
@@ -120,12 +121,14 @@ public class Board {
                 //if passed go or not
                 if (currentPlayer.PlayerLocation == 26) {
                     currentPlayer.landOnGo = true; //landed on go
+                    currentPlayer.PlayerLocation -= 26;
                 } else if (currentPlayer.PlayerLocation > 26) {
                     currentPlayer.passGo = true; //passed go
+                    currentPlayer.PlayerLocation -= 26;
                 }
 
                 // code to make player move along this board
-                movePlayerOnBoard(counter, move, players);
+                movePlayerOnBoard(counter, move, players, mainForm);
 
                 // landing boolean stuff (bean, miss-a-go)
                 if (currentPlayer.PlayerLocation != 0 && currentPlayer.PlayerLocation != 13) {
@@ -149,11 +152,13 @@ public class Board {
                     String isOwnedText = beans.get(currentBean).isBeanOwned() ? "Yes" : "False";
 
                     //print bean information
-                    mainForm.outputConsoleText("\tYou landed on: " + currentBeanName + "\n" +
+                    mainForm.outputConsoleText("\t~~~~~~~~~~~~~~~~~~~~~~~~" +
+                            "\tYou landed on: " + currentBeanName + "\n" +
                             "\tLevel: " + currentBeanLevel + "\n" +
                             "\tCost to buy: " + currentBeanCost + "\n" +
                             "\tTax Level 0/1/2/3: " + currentBeanTax + "/" + (currentBeanTax * 2) + "/" + (currentBeanTax * 3) + "/" + (currentBeanTax * 4) + "\n" +
-                            "\tOwned: " + isOwnedText);
+                            "\tOwned: " + isOwnedText + "\n" +
+                            "\t~~~~~~~~~~~~~~~~~~~~~~~~");
 
                     if (beans.get(currentBean).getOwnerID() == counter) { // if you own the bean
                         mainForm.BUYUPGRADEButton.setEnabled(true); //enable upgrade button
@@ -161,21 +166,22 @@ public class Board {
 
                         while (!mainForm.continueButtonPressed && !mainForm.buyUpgradeButtonPressed) {
                             try {
-                                // Sleep for 0.5 seconds (500 milliseconds)
                                 Thread.sleep(500);
                             } catch (InterruptedException e) {
-                                // Handle the InterruptedException if needed
                                 e.printStackTrace();
                             }
                         }
 
                         if (mainForm.buyUpgradeButtonPressed && beans.get(currentBean).getLevel() < 3) { //if upgrade button pressed and if not max level
                             beans.get(currentBean).upgrade(); //upgrade bean
+                            mainForm.CONTINUEButton.setEnabled(false);
+                            mainForm.BUYUPGRADEButton.setEnabled(false);
                             int cost = beans.get(currentBean).getCost();
                             players.get(counter).changeMoney(-cost, players, mainForm);
                             mainForm.buyUpgradeButtonPressed = false;
                         } else if (mainForm.continueButtonPressed) {
                             mainForm.continueButtonPressed = false;
+                            mainForm.BUYUPGRADEButton.setEnabled(false);
                             continue;
                         }
                     } else if (!beans.get(currentBean).isBeanOwned()) { //if bean is unowned
@@ -184,10 +190,8 @@ public class Board {
 
                         while (!mainForm.continueButtonPressed && !mainForm.buyUpgradeButtonPressed) {
                             try {
-                                // Sleep for 0.5 seconds (500 milliseconds)
                                 Thread.sleep(500);
                             } catch (InterruptedException e) {
-                                // Handle the InterruptedException if needed
                                 e.printStackTrace();
                             }
                         }

@@ -34,6 +34,7 @@ public class Main {
                     PlayerManager.playerWon(players, 0, mainForm);
 
                 }
+                numOfPlayers = playerManager.numOfPlayers;
             }
             numOfPlayers = playerManager.numOfPlayers;
         } while (!gameWon);
