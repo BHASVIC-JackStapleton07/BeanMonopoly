@@ -253,7 +253,7 @@ public class Board {
                         }
                     }
                 } else {
-                    mainForm.outputConsoleText("You landed on miss a turn, so your turn has been skipped!");
+                    mainForm.outputConsoleText( currentPlayer.PlayerName + " landed on miss a turn, so their turn has been skipped!");
                     currentPlayer.missATurn = false;
                 }
 
