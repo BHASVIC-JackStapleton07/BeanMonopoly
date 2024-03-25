@@ -10,8 +10,6 @@ import static src.Main.sleep;
 
 public class Board {
 
-    Bean bean = new Bean();
-    public String boardText = generateBoard();
 
     PlayerManager playerManager = new PlayerManager();
 
@@ -150,7 +148,7 @@ public class Board {
 
 
                 if (currentPlayer.landOnBean) {
-                    int currentBean = currentPlayer.PlayerLocation - 1;
+                    int currentBean = currentPlayer.PlayerLocation - 2;
 
                     if (currentBean >= 13) {
                         currentBean--;
@@ -161,6 +159,7 @@ public class Board {
                     int currentBeanTax = beans.get(currentBean).getTax();
                     int currentBeanLevel = beans.get(currentBean).getLevel();
                     String isOwnedText = beans.get(currentBean).isBeanOwned() ? "Yes" : "False";
+                    int ownerIDText = beans.get(currentBean).getOwnerID();
 
                     //print bean information
                     mainForm.outputConsoleText("\t~~~~~~~~~~~~~~~~~~~~~~~~" +
@@ -169,9 +168,11 @@ public class Board {
                             "\tCost to buy: " + currentBeanCost + "\n" +
                             "\tTax Level 0/1/2/3: " + currentBeanTax + "/" + (currentBeanTax * 2) + "/" + (currentBeanTax * 3) + "/" + (currentBeanTax * 4) + "\n" +
                             "\tOwned: " + isOwnedText + "\n" +
+                            "\tOwner: " + ownerIDText + "\n" +
                             "\t~~~~~~~~~~~~~~~~~~~~~~~~");
 
                     if (beans.get(currentBean).getOwnerID() == counter) { // if you own the bean
+                        mainForm.BUYUPGRADEButton.setText("UPGRADE");
                         mainForm.BUYUPGRADEButton.setEnabled(true); //enable upgrade button
                         mainForm.CONTINUEButton.setEnabled(true); //enable button
 
@@ -196,8 +197,9 @@ public class Board {
                             continue;
                         }
                     } else if (!beans.get(currentBean).isBeanOwned()) { //if bean is unowned
-                            mainForm.BUYUPGRADEButton.setEnabled(true); //enable buy button
-                            mainForm.CONTINUEButton.setEnabled(true); //enable continue button
+                        mainForm.BUYUPGRADEButton.setText("BUY");
+                        mainForm.BUYUPGRADEButton.setEnabled(true); //enable buy button
+                        mainForm.CONTINUEButton.setEnabled(true); //enable continue button
 
                         while (!mainForm.continueButtonPressed && !mainForm.buyUpgradeButtonPressed) {
                             try {
@@ -221,18 +223,18 @@ public class Board {
                                 mainForm.continueButtonPressed = false;
                                 continue;
                             }
-                        } else { //bean belongs to someone else
-                            //tax
-                            int level = beans.get(currentBean).getLevel();
-                            int tax = beans.get(currentBean).getTax();
-                            int ownerID = beans.get(currentBean).getOwnerID();
-                            currentPlayer.changeMoney(-(tax * (level + 1)), players, mainForm);//remove money from taxed player
-                            players.get(ownerID).changeMoney((tax) * (level + 1), players, mainForm); //give money to owner of bean
-                            checkBalance(counter, players, mainForm); //check if in debt
-                            mainForm.continueButtonPressed = false;
-                            mainForm.buyUpgradeButtonPressed = false;
-                        }
+                    } else { //bean belongs to someone else
+                        //tax
+                        int level = beans.get(currentBean).getLevel();
+                        int tax = beans.get(currentBean).getTax();
+                        int ownerID = beans.get(currentBean).getOwnerID();
+                        currentPlayer.changeMoney(-(tax * (level + 1)), players, mainForm);//remove money from taxed player
+                        players.get(ownerID).changeMoney((tax) * (level + 1), players, mainForm); //give money to owner of bean
+                        checkBalance(counter, players, mainForm); //check if in debt
+                        mainForm.continueButtonPressed = false;
+                        mainForm.buyUpgradeButtonPressed = false;
                     }
+                }
 
 
                     if (currentPlayer.landedOnCard) {

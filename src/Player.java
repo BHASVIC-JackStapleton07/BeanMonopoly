@@ -28,7 +28,7 @@ public class Player {
         this.PlayerNumber = newPlayerNumber;
         this.PlayerName = newPlayerName;
         this.playingPiece = newPlayerPiece;
-        this.MoneyBalance = 2000;
+        this.MoneyBalance = 1000;
         isDouble = false; landedOnCard = false; landedOnMissATurn = false; missATurn = false;
         landOnGo = false; passGo = false; landOnBean = false;
     }

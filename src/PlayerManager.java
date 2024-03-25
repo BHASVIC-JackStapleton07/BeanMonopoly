@@ -30,20 +30,38 @@ public class PlayerManager {
         System.exit(0);
     }
 
+    private static boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch(NumberFormatException e) {
+            return false;
+        }
+    }
+
     public static void createPlayers(ArrayList<Player> players, MainForm mainForm) {
         String playingPiece;
         int stringLength;
         String name;
         int nameLength;
+        boolean invalid;
+        String playerNumInput;
         do {
-            mainForm.outputConsoleText("How many players will be playing this game of Bean monopoly? (2-4): ");
-            String input = mainForm.getAnswerFieldText();
-            Main.sleep();
-            if (input.isEmpty()) {
-                mainForm.outputConsoleText("Please enter a valid number of players.");
-                continue;
-            }
-            numOfPlayers = Integer.parseInt(input);
+            do {
+                invalid = false;
+                mainForm.outputConsoleText("How many players will be playing this game of Bean monopoly? (2-4): ");
+                playerNumInput = mainForm.getAnswerFieldText();
+                Main.sleep();
+                if (playerNumInput.isEmpty()) {
+                    mainForm.outputConsoleText("Please enter a valid number of players.");
+                    invalid = true;
+                }
+                if (!isNumeric(playerNumInput)) {
+                    mainForm.outputConsoleText("Please enter a valid number of players.");
+                    invalid = true;
+                }
+            } while (invalid);
+            numOfPlayers = Integer.parseInt(playerNumInput);
         } while (numOfPlayers < 2 || numOfPlayers > 4);
         //validates if the correct number of players are playing
         for (int i = 1; i <= numOfPlayers; i++) {
@@ -69,18 +87,21 @@ public class PlayerManager {
             } while (nameLength >= 10); //code to validate a string input
 
             do {
+                invalid = false;
                 mainForm.outputConsoleText("What would you like your playing piece to be, you can choose one ASCII character:");
                 Main.sleep();
                 playingPiece = mainForm.getAnswerFieldText();
                 stringLength = playingPiece.length();
                 if (stringLength != 1) {
+                    invalid = true;
                     mainForm.outputConsoleText("Sorry, your playing piece can only be one character, please try again.");
                     Main.sleep();
                 }
-            } while (stringLength != 1);
+                if (playingPiece.equals(" ")) { invalid = true; }
+            } while (stringLength != 1 || invalid);
 
             Main.sleep();
-            mainForm.outputConsoleText("Welcome to Bean monopoly " + name + " ,happy playing!");
+            mainForm.outputConsoleText("Welcome to Bean monopoly " + name + ", happy playing!");
             Player player = new Player(i, name, playingPiece);
             players.add(player);
         }
