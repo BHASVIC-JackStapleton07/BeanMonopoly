@@ -29,7 +29,7 @@ public class Main {
 
         do {
             for (int i = 0; i < numOfPlayers; i++){
-                board.turn(players, beans, i, mainForm); //does a turn for each player until gameWon = false
+                board.turn(players, beans, cards, i, mainForm); //does a turn for each player until gameWon = false
                 if (numOfPlayers == 1) {
                     String winnerName = players.get(0).PlayerName;
                     PlayerManager.playerWon(players, 0, mainForm);

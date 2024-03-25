@@ -17,13 +17,15 @@ public class Cards {
         random = new Random();
     }
 
-    public String returnCardText(int index) {
-        textOutput = cards.get(index).textOutput;
+    public Cards() {
+
+    }
+
+    public String returnCardText() {
         return textOutput;
     }
 
-    public int returnCardMoneyChange(int index) {
-        outcome = cards.get(index).outcome;
+    public int returnCardMoneyChange() {
         return outcome;
     }
 }

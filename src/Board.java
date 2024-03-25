@@ -85,7 +85,7 @@ public class Board {
     DiceRoller dice = new DiceRoller();
 
 
-    public void turn(ArrayList<Player> players, ArrayList<Bean> beans, int playerTurn, MainForm mainForm) {
+    public void turn(ArrayList<Player> players, ArrayList<Bean> beans, ArrayList<Cards> cards, int playerTurn, MainForm mainForm) {
         int counter = playerTurn;
 
         Player currentPlayer = players.get(counter);
@@ -144,7 +144,7 @@ public class Board {
                 } else if (currentPlayer.PlayerLocation == 13) {
                     currentPlayer.landedOnMissATurn = true; //miss next go
                 }
-                if (currentPlayer.PlayerLocation == 3  ||currentPlayer.PlayerLocation == 8 || currentPlayer.PlayerLocation == 10 || currentPlayer.PlayerLocation == 12 || currentPlayer.PlayerLocation == 16 || currentPlayer.PlayerLocation == 20 || currentPlayer.PlayerLocation == 24){
+                if (isDouble){
                     currentPlayer.landedOnCard = true;
                 }
 
@@ -237,13 +237,12 @@ public class Board {
 
                     if (currentPlayer.landedOnCard) {
                         Random random = new Random();
-                        Cards cards = new Cards("", 0);
                         int randomNum = random.nextInt(13);
-                        String cardText = cards.returnCardText(randomNum);
-                        int cardMoneyChange = cards.returnCardMoneyChange(randomNum);
+                        String cardText = cards.get(randomNum).returnCardText();
+                        int cardMoneyChange = cards.get(randomNum).returnCardMoneyChange();
                         currentPlayer.changeMoney(cardMoneyChange, players, mainForm);
                         checkBalance(counter, players, mainForm);
-                        mainForm.outputConsoleText(cardText);
+                        mainForm.outputConsoleText(  "|" + cardText + "Money change: " +cardMoneyChange + "|");
 
                         //make sure all cards actually do something
                     }
