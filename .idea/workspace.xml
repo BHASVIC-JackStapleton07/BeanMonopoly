@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1d856ca-e875-4458-be54-4c46f99f9e3d" name="Changes" comment="lots of work on board">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BeanMonopoly/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BeanMonopoly/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BeanMonopoly/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BeanMonopoly/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayerManager.java" afterDir="false" />
     </list>
     <list id="036b7d7f-50a5-47ec-b266-967646ab3bf4" name="Changes by hugo.wilkinson23" comment="" />
     <list id="4edf1d4f-7400-4703-b50f-7c3e547fa72c" name="Changes by thomas.smyth23" comment="" />
@@ -95,6 +95,7 @@
       <workItem from="1710923498610" duration="4626000" />
       <workItem from="1710926148123" duration="682000" />
       <workItem from="1711017876190" duration="1590000" />
+      <workItem from="1711361632541" duration="2255000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1710162686299</created>

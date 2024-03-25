@@ -6,6 +6,8 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
 
+import static src.Main.sleep;
+
 public class Board {
 
     Bean bean = new Bean();
@@ -110,11 +112,16 @@ public class Board {
                 currentPlayer.isDouble = false;
                 mainForm.printBoard(generateBoard());
                 mainForm.outputConsoleText("\nIt is now " + (players.get(counter).PlayerName) + "'s turn.");
+                sleep();
                 mainForm.updateMoneyBalanceDisplay(counter, players);
                 mainForm.outputConsoleText("Dice 1: " + diceRoller.dice1);
+                Main.sleep();
                 mainForm.outputConsoleText("Dice 2: " + diceRoller.dice2);
+                Main.sleep();
                 mainForm.outputConsoleText("Total Score: " + diceRoller.getTotalScore());
+                Main.sleep();
                 mainForm.outputConsoleText("Is double: " + diceRoller.isDouble());
+                Main.sleep();
                 move = diceRoller.getTotalScore();
                 currentPlayer.isDouble = diceRoller.isDouble;
 
@@ -122,6 +129,7 @@ public class Board {
                 if (currentPlayer.PlayerLocation == 26) {
                     currentPlayer.landOnGo = true; //landed on go
                     currentPlayer.PlayerLocation -= 26;
+                    mainForm.continueButtonPressed = true;
                 } else if (currentPlayer.PlayerLocation > 26) {
                     currentPlayer.passGo = true; //passed go
                     currentPlayer.PlayerLocation -= 26;
@@ -135,6 +143,9 @@ public class Board {
                     currentPlayer.landOnBean = true; //unless landed on start or miss you land on a bean
                 } else if (currentPlayer.PlayerLocation == 13) {
                     currentPlayer.landedOnMissATurn = true; //miss next go
+                }
+                if (currentPlayer.PlayerLocation == 3  ||currentPlayer.PlayerLocation == 8 || currentPlayer.PlayerLocation == 10 || currentPlayer.PlayerLocation == 12 || currentPlayer.PlayerLocation == 16 || currentPlayer.PlayerLocation == 20 || currentPlayer.PlayerLocation == 24){
+                    currentPlayer.landedOnCard = true;
                 }
 
 
@@ -239,6 +250,7 @@ public class Board {
 
                     if (currentPlayer.landOnGo) {
                         currentPlayer.changeMoney(1000, players, mainForm);
+                        Main.sleep();
                         mainForm.outputConsoleText("You landed on go! Your balance has increased by 1000.");
 
                     }
@@ -252,11 +264,13 @@ public class Board {
                         currentPlayer.missATurn = true;
                         mainForm.outputConsoleText("You landed on miss a turn! Sorry, but your next turn will be skipped!");
                         if (currentPlayer.isDouble) {
+                            Main.sleep();
                             mainForm.outputConsoleText("Even though you rolled a double, since you landed on miss a turn, you wont be able to roll again, bad luck!"); //giving user explanation, so it doesn't come off as a bug
                             currentPlayer.isDouble = false; //makes sure player cant roll again if they land on miss a turn
                         }
                     }
                 } else {
+                    Main.sleep();
                     mainForm.outputConsoleText( currentPlayer.PlayerName + " landed on miss a turn, so their turn has been skipped!");
                     currentPlayer.missATurn = false;
                 }
